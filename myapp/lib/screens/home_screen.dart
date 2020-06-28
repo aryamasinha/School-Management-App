@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height;
+    var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: Stack(
           children: <Widget>[
-
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -23,48 +25,30 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Container(
+            Positioned(
+                top: screenHeight * .325,
+                left: screenWidth * .10,
+                right: screenWidth * .10,
+                height: screenHeight * .35,
+                //width: 250,
+                child: Opacity(
+                    opacity: .2,
+                    child: Card(
+                        child: Column(
+                      children: <Widget>[
+                          Expanded(
 
-                  width: double.infinity,
-                  child: Text(
-                    'You Are a ?',
-                    style: TextStyle(fontSize: 50),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                RaisedButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.red)),
-                  onPressed: () {},
-                  color: Colors.blueAccent,
-                  textColor: Colors.white,
-                  child: Text("Student", style: TextStyle(fontSize: 28)),
-                ),
-                RaisedButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.red)),
-                  onPressed: () {},
-                  color: Colors.blueAccent,
-                  textColor: Colors.white,
-                  child: Text("Teacher", style: TextStyle(fontSize: 28)),
-                ),
-                RaisedButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.red)),
-                  onPressed: () {},
-                  color: Colors.blueAccent,
-                  textColor: Colors.white,
-                  child: Text("Principal", style: TextStyle(fontSize: 28)),
-                ),
-              ],
-            ),
+                            child: Container(
+                              color: Colors.red,
+                                child: Text('Are You a ?'),
+                              ),
+                          ),
+
+                      ],
+                    )
+                    )
+                )
+            )
           ],
         ),
       ),
