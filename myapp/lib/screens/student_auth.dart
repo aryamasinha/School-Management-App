@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/Animation/FadeAnimation.dart';
 
 class StudentAuth extends StatelessWidget {
   static const routeName = '/student-auth';
