@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/Animation/FadeAnimation.dart';
 
-class TeacherAuth extends StatelessWidget {
-  static const routeName = '/teacher-auth';
+class AuthScreen extends StatelessWidget {
+  static const routeName = '/auth-screen';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,7 +108,7 @@ class TeacherAuth extends StatelessWidget {
                                         border: InputBorder.none,
                                         hintText: "Enter Id",
                                         hintStyle:
-                                        TextStyle(color: Colors.grey[400])),
+                                            TextStyle(color: Colors.grey[400])),
                                   ),
                                 ),
                                 Container(
@@ -118,7 +118,8 @@ class TeacherAuth extends StatelessWidget {
                                         border: InputBorder.none,
                                         hintText: "Password",
                                         hintStyle:
-                                        TextStyle(color: Colors.grey[400])),
+                                            TextStyle(color: Colors.grey[400])),
+                                    obscureText: true,
                                   ),
                                 )
                               ],

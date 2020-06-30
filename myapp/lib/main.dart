@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/screens/home_screen.dart';
-import 'package:myapp/screens/student_auth.dart';
-import 'package:myapp/screens/superuser_auth.dart';
-import 'package:myapp/screens/teacher_auth.dart';
+import 'package:myapp/screens/auth_screen.dart';
+import 'package:myapp/screens/splash_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,11 +14,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home: SplashScreen(),
       routes: {
-        StudentAuth.routeName: (ctx) => StudentAuth(),
-        TeacherAuth.routeName: (ctx) => TeacherAuth(),
-        SuperuserAuth.routeName: (ctx) => SuperuserAuth(),
+           AuthScreen.routeName: (ctx)=>AuthScreen(),
       },
     );
   }
