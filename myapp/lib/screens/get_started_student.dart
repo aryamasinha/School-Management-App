@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Image.asset(
-                'assets/images/teachers.png',
+                'assets/images/students.png',
                 width: 500,
                 height: 400,
               ),
