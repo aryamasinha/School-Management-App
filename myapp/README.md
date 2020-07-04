@@ -1,2 +1,1 @@
-
 A new Flutter project.

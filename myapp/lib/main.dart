@@ -1,44 +1,40 @@
 import 'package:flutter/material.dart';
+import './screens/login_screen.dart';
+import 'package:splashscreen/splashscreen.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(new MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: new MyApp(),
+    ));
+}
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-      backgroundColor: Color.fromRGBO(220, 155, 253, 1),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            left: 20,
-            right: 20,
-            top: 100,
-          ),
-          child: Column(
-            children: <Widget>[
-              Image.asset(
-                'assets/images/teachers.png',
-                width: 500,
-                height: 400,
-              ),
-              SizedBox(
-                width: double.infinity,
-                              child: RaisedButton(
-                  onPressed: () {},
-                  textColor: Colors.purple,
-                  child: const Text(
-                    'Get Started',
-                    style: TextStyle(fontSize: 20)
+    return SplashScreen(
+      seconds: 3,
+      backgroundColor: Colors.white,
+      photoSize: 100.0,
+      image: Image.asset(
+                  'assets/images/FSPS.jpg',
                   ),
-                ),
-              ),
-            ],
+      navigateAfterSeconds: LoginScreen(),
+      loaderColor: Colors.white,
+
+      title: Text("\nFirst Step Play School",
+            style: TextStyle(
+              color: Colors.green,
+              fontFamily: "Raleway",
+              fontSize: 30,
+              fontWeight: FontWeight.w800,    
+            ) 
           ),
-        ),
-      ),
-    )
     );
   }
 }
