@@ -21,6 +21,7 @@ class _MyAppState extends State<MyApp> {
       seconds: 3,
       backgroundColor: Colors.white,
       photoSize: 100.0,
+      
       image: Image.asset(
                   'assets/images/FSPS.jpg',
                   ),
