@@ -50,31 +50,55 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('First Step Play School'),
+        backgroundColor: Colors.purple[200],
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.exit_to_app),
+            tooltip: 'Logout',
+            // onPressed: () {
+            //   // do something
+            // },
+          ),
+          // IconButton(
+          //   icon: const Icon(Icons.navigate_next),
+          //   tooltip: 'Next page',
+          //   onPressed: () {
+          //     // do something
+          //   },
+          // ),
+        ],
+      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home,
-            size: 35,
-            color: Colors.purple,),
-            title: Text('Home',
-            style: TextStyle(
-              fontSize: 15,
-              color: Colors.purple
+            icon: Icon(
+              Icons.home,
+              size: 35,
+              color: Colors.purple,
             ),
+            title: Text(
+              'Home',
+              style: TextStyle(fontSize: 15, color: Colors.purple),
             ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat,
-            size: 35,
-            color: Colors.purple,),
-            title: Text('Chat',
-            style: TextStyle(
-              fontSize: 15,
+            icon: Icon(
+              Icons.chat,
+              size: 35,
               color: Colors.purple,
-            ),),
+            ),
+            title: Text(
+              'Chat',
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.purple,
+              ),
+            ),
           ),
         ],
         currentIndex: _selectedIndex,
