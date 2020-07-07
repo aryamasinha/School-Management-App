@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:schoolapp/screens/Student/student_dashboard.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class StudentDetail extends StatelessWidget {
+  static const routeName = '/student-detail';
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
       backgroundColor: Color.fromRGBO(220, 155, 253, 1),
       body: Center(
         child: Padding(
@@ -137,7 +137,9 @@ class MyApp extends StatelessWidget {
             SizedBox(
                     width: double.infinity,
                     child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacementNamed(StudentDashboard.routeName);
+                    },
                     textColor: Colors.purple,
                     child: const Text(
                       'Submit',
@@ -150,7 +152,6 @@ class MyApp extends StatelessWidget {
             ),
           )
         )
-      )
       )
     );
   }

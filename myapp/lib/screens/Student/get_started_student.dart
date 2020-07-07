@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:schoolapp/screens/Student/student_detail.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class StudentGetStarted extends StatelessWidget {
+  static const routeName = '/student-get-started';
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
       backgroundColor: Color.fromRGBO(220, 155, 253, 1),
       body: Center(
         child: Padding(
@@ -25,7 +25,9 @@ class MyApp extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                               child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed(StudentDetail.routeName);
+                  },
                   textColor: Colors.purple,
                   child: const Text(
                     'Get Started',
@@ -37,7 +39,6 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-    )
     );
   }
 }

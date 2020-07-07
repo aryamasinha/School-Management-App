@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:schoolapp/screens/Student/get_started_student.dart';
+import 'package:schoolapp/screens/Teacher/get_started_teacher.dart';
 
 
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    var isStudent=true;
+    var isTeacher=false;
+    var isPrincipal=false;
+    return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
@@ -95,7 +98,17 @@ class LoginScreen extends StatelessWidget {
                   
                   width: double.infinity,
                 child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if(isStudent){
+                      Navigator.of(context).pushReplacementNamed(StudentGetStarted.routeName);
+                    }
+                    else if(isTeacher){
+                      Navigator.of(context).pushReplacementNamed(TeacherGetStarted.routeName);
+                    }
+                    else{
+
+                    }
+                  },
                   textColor: Colors.purple,
                   child: const Text(
                     'Login',
@@ -108,7 +121,6 @@ class LoginScreen extends StatelessWidget {
             ),
         ),
         ),
-      ),
     ); 
   }
 }
