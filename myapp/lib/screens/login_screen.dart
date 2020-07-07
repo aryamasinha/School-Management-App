@@ -9,6 +9,41 @@ class LoginScreen extends StatelessWidget {
     var isStudent=true;
     var isTeacher=false;
     var isPrincipal=false;
+    final _emailController=TextEditingController();
+    final _passwordController = TextEditingController();
+    void _submit(){
+      // function added to check for empty fields
+      print(_emailController.text);
+      print(_passwordController.text);
+      if(_passwordController.text.isEmpty||_emailController.text.isEmpty){
+        showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            title: Text('An Error Occurred!'),
+            content: Text('Id and Password field must be filled'),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Okay'),
+                onPressed: () {
+                  Navigator.of(ctx).pop();
+                },
+              )
+            ],
+          ),
+        );
+      }
+      else{
+        if(isStudent){
+          Navigator.of(context).pushReplacementNamed(StudentGetStarted.routeName);
+        }
+        else if(isTeacher){
+          Navigator.of(context).pushReplacementNamed(TeacherGetStarted.routeName);
+        }
+        else{
+
+        }
+      }
+    }
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
@@ -58,6 +93,7 @@ class LoginScreen extends StatelessWidget {
                             left: 8,
                           ),
                           child: TextField(
+                            controller: _emailController,
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Enter LoginID',
@@ -73,6 +109,8 @@ class LoginScreen extends StatelessWidget {
                             left: 8,
                           ),
                           child: TextField(
+                            obscureText: true,
+                            controller: _passwordController,
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Enter password',
@@ -98,17 +136,7 @@ class LoginScreen extends StatelessWidget {
                   
                   width: double.infinity,
                 child: RaisedButton(
-                  onPressed: () {
-                    if(isStudent){
-                      Navigator.of(context).pushReplacementNamed(StudentGetStarted.routeName);
-                    }
-                    else if(isTeacher){
-                      Navigator.of(context).pushReplacementNamed(TeacherGetStarted.routeName);
-                    }
-                    else{
-
-                    }
-                  },
+                  onPressed: _submit,
                   textColor: Colors.purple,
                   child: const Text(
                     'Login',
