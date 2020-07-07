@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
                  Padding(
                    padding: const EdgeInsets.only(
                      top: 20,
+                     left: 20,
                    ),
                    child: Text(
                      "Result",
