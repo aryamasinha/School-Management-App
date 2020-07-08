@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:schoolapp/screens/Student/student_dashboard.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class StudentDetail extends StatelessWidget {
+  static const routeName = '/student-detail';
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-            backgroundColor: Color.fromRGBO(220, 155, 253, 1),
-            body: Center(
-                child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 20,
-                      right: 20,
-                    ),
-                    child: SingleChildScrollView(
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(220, 155, 253, 1),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+          ),
+          child:SingleChildScrollView(
                       child: Column(
                         children: <Widget>[
                           Padding(
@@ -140,8 +140,49 @@ class MyApp extends StatelessWidget {
                                   style: TextStyle(fontSize: 20)),
                             ),
                           ),
-                        ],
-                      ),
-                    )))));
+                        ),
+                     ),
+                   ),
+                   SizedBox(
+                     height: 20,
+                     ),
+                   Text("Upload your photograph"),
+                   SizedBox(
+                     height: 10,
+                     ),
+                   RaisedButton(
+                  onPressed: () {},
+                  textColor: Colors.purple,
+                  child: const Text(
+                    'Select an image',
+                    style: TextStyle(fontSize: 15)
+                  ),
+                ),
+                SizedBox(
+                     height: 10,
+                     ),
+                ],
+              ),
+            ),
+            SizedBox(
+                    width: double.infinity,
+                    child: RaisedButton(
+                    onPressed: () {
+                      Navigator.of(context).pushReplacementNamed(StudentDashboard.routeName);
+                    },
+                    textColor: Colors.purple,
+                    child: const Text(
+                      'Submit',
+                      style: TextStyle(fontSize: 20)
+                    ),
+                  ),
+            ),
+              ],
+              
+            ),
+          )
+        )
+      )
+    );
   }
 }
