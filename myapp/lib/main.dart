@@ -1,28 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:schoolapp/screens/Student/get_started_student.dart';
-import 'package:schoolapp/screens/Student/student_dashboard.dart';
-import 'package:schoolapp/screens/Student/student_detail.dart';
-import 'package:schoolapp/screens/Teacher/get_started_teacher.dart';
-import 'package:schoolapp/screens/Teacher/teacher_dashboard.dart';
-import 'package:schoolapp/screens/Teacher/teacher_detail.dart';
-import 'package:schoolapp/screens/login_screen.dart';
+import './screens/login_screen.dart';
+import 'package:splashscreen/splashscreen.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(new MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: new MyApp(),
+    ));
+}
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
-      routes: {
-        StudentGetStarted.routeName: (ctx) =>StudentGetStarted(),
-        StudentDetail.routeName :(ctx) =>StudentDetail(),
-        StudentDashboard.routeName : (ctx) =>StudentDashboard(),
-        TeacherGetStarted.routeName: (ctx) =>TeacherGetStarted(),
-        TeacherDetail.routeName: (ctx) =>TeacherDetail(),
-        TeacherDashboard.routeName: (ctx) =>TeacherDashboard(),
-      },
+    return SplashScreen(
+      seconds: 3,
+      backgroundColor: Colors.white,
+      photoSize: 100.0,
+      
+      image: Image.asset(
+                  'assets/images/FSPS.jpg',
+                  ),
+      navigateAfterSeconds: LoginScreen(),
+      loaderColor: Colors.white,
+
+      title: Text("\nFirst Step Play School",
+            style: TextStyle(
+              color: Colors.green,
+              fontFamily: "Raleway",
+              fontSize: 30,
+              fontWeight: FontWeight.w800,    
+            ) 
+          ),
     );
   }
 }
