@@ -1,49 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:schoolapp/screens/Student/get_started_student.dart';
-import 'package:schoolapp/screens/Teacher/get_started_teacher.dart';
+
 
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var isStudent=true;
-    var isTeacher=false;
-    var isPrincipal=false;
-    final _emailController=TextEditingController();
-    final _passwordController = TextEditingController();
-    void _submit(){
-      // function added to check for empty fields
-      print(_emailController.text);
-      print(_passwordController.text);
-      if(_passwordController.text.isEmpty||_emailController.text.isEmpty){
-        showDialog(
-          context: context,
-          builder: (ctx) => AlertDialog(
-            title: Text('An Error Occurred!'),
-            content: Text('Id and Password field must be filled'),
-            actions: <Widget>[
-              FlatButton(
-                child: Text('Okay'),
-                onPressed: () {
-                  Navigator.of(ctx).pop();
-                },
-              )
-            ],
-          ),
-        );
-      }
-      else{
-        if(isStudent){
-          Navigator.of(context).pushReplacementNamed(StudentGetStarted.routeName);
-        }
-        else if(isTeacher){
-          Navigator.of(context).pushReplacementNamed(TeacherGetStarted.routeName);
-        }
-        else{
-
-        }
-      }
-    }
-    return Scaffold(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
@@ -79,10 +42,9 @@ class LoginScreen extends StatelessWidget {
                   right: 20,
                   left: 20,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20,
-                    bottom: 20,
+                child: Container(
+                  decoration: new BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: Card(
                     color: Color.fromRGBO(220, 155, 253, 0.7),
@@ -93,7 +55,6 @@ class LoginScreen extends StatelessWidget {
                             left: 8,
                           ),
                           child: TextField(
-                            controller: _emailController,
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Enter LoginID',
@@ -109,8 +70,6 @@ class LoginScreen extends StatelessWidget {
                             left: 8,
                           ),
                           child: TextField(
-                            obscureText: true,
-                            controller: _passwordController,
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Enter password',
@@ -119,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                                 fontFamily: "Raleway",
                               )
                             ),
-                          ],
+                          ),
                         ),
                         
                       ],
@@ -136,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                   
                   width: double.infinity,
                 child: RaisedButton(
-                  onPressed: _submit,
+                  onPressed: () {},
                   textColor: Colors.purple,
                   child: const Text(
                     'Login',
@@ -147,8 +106,9 @@ class LoginScreen extends StatelessWidget {
                 ),
               ],
             ),
-          ),
         ),
+        ),
+      ),
     ); 
   }
 }

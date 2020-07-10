@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:schoolapp/screens/Student/student_dashboard.dart';
 
+void main() => runApp(MyApp());
 
-class StudentDetail extends StatelessWidget {
-  static const routeName = '/student-detail';
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+      home: Scaffold(
       backgroundColor: Color.fromRGBO(220, 155, 253, 1),
       body: Center(
         child: Padding(
@@ -16,129 +16,99 @@ class StudentDetail extends StatelessWidget {
           ),
           child:SingleChildScrollView(
                       child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 50,
-                              bottom: 20,
-                            ),
-                            child: Image.asset('assets/images/student.png',
-                                height: 100, width: 100),
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 50,
+                    bottom: 20,
+                  ),
+                  child: Image.asset(
+                        'assets/images/student.png',
+                        height: 100,
+                        width: 100),
+                ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top : 20,
+                          bottom: 20,
+                        ),
+                        child: Text("Enter the following details",
+                        style: TextStyle(
+                          fontFamily: "Cursive",
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        ),
+                      ),
+                   Card(
+              child: Column(
+                children: <Widget>[
+                   Padding(
+                     padding: const EdgeInsets.only(
+                       left: 10,
+                       right: 10,
+                     ),
+                     child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Enter name',
+                          hintStyle: TextStyle(
+                            fontFamily: "Raleway",
+                            color: Colors.purple,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 20,
-                              bottom: 20,
-                            ),
-                            child: Text(
-                              "Enter the following details",
-                              style: TextStyle(
-                                fontFamily: "Cursive",
-                                fontSize: 25,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                        ),
+                     ),
+                   ),
+                   SizedBox(
+                     height: 10,
+                     ),
+                   Padding(
+                     padding: const EdgeInsets.only(
+                       left: 10,
+                       right: 10,
+                     ),
+                     child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Enter Father\'s Name',
+                          hintStyle: TextStyle(
+                            fontFamily: "Raleway",
+                            color: Colors.purple,
                           ),
-                          Card(
-                            child: Column(
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 10,
-                                    right: 10,
-                                  ),
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                      hintText: 'Enter name',
-                                      hintStyle: TextStyle(
-                                        fontFamily: "Raleway",
-                                        color: Colors.purple,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 10,
-                                    right: 10,
-                                  ),
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                      hintText: 'Enter Father\'s Name',
-                                      hintStyle: TextStyle(
-                                        fontFamily: "Raleway",
-                                        color: Colors.purple,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 10,
-                                    right: 10,
-                                  ),
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                      hintText: 'Enter Mother\'s Name',
-                                      hintStyle: TextStyle(
-                                        fontFamily: "Raleway",
-                                        color: Colors.purple,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 10,
-                                    right: 10,
-                                  ),
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                      hintText: 'Enter Class',
-                                      hintStyle: TextStyle(
-                                        fontFamily: "Raleway",
-                                        color: Colors.purple,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Text("Upload your photograph"),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                RaisedButton(
-                                  onPressed: () {},
-                                  textColor: Colors.purple,
-                                  child: const Text('Select an image',
-                                      style: TextStyle(fontSize: 15)),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                              ],
-                            ),
+                        ),
+                     ),
+                   ),
+                   SizedBox(
+                     height: 10,
+                     ),
+                   Padding(
+                     padding: const EdgeInsets.only(
+                       left: 10,
+                       right: 10,
+                     ),
+                     child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Enter Mother\'s Name',
+                          hintStyle: TextStyle(
+                            fontFamily: "Raleway",
+                            color: Colors.purple,
                           ),
-                          SizedBox(
-                            width: double.infinity,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              textColor: Colors.purple,
-                              child: const Text('Submit',
-                                  style: TextStyle(fontSize: 20)),
-                            ),
+                        ),
+                     ),
+                   ),
+                   SizedBox(
+                     height: 10,
+                     ),
+                   Padding(
+                     padding: const EdgeInsets.only(
+                       left: 10,
+                       right: 10,
+                     ),
+                     child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Enter Class',
+                          hintStyle: TextStyle(
+                            fontFamily: "Raleway",
+                            color: Colors.purple,
                           ),
                         ),
                      ),
@@ -167,9 +137,7 @@ class StudentDetail extends StatelessWidget {
             SizedBox(
                     width: double.infinity,
                     child: RaisedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushReplacementNamed(StudentDashboard.routeName);
-                    },
+                    onPressed: () {},
                     textColor: Colors.purple,
                     child: const Text(
                       'Submit',
@@ -182,6 +150,7 @@ class StudentDetail extends StatelessWidget {
             ),
           )
         )
+      )
       )
     );
   }
