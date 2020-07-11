@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "498880566249",
+    "firebase_url": "https://fsps-68dca.firebaseio.com",
+    "project_id": "fsps-68dca",
+    "storage_bucket": "fsps-68dca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498880566249:android:ca3ba9a5fe2eaeacc83178",
+        "android_client_info": {
+          "package_name": "com.fsps.schoolapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498880566249-28so5nlkg03ecisk993eog6bavceom8t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTpP08MWSu07Uh2Iovqok5vRWy7aXcrLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498880566249-28so5nlkg03ecisk993eog6bavceom8t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
