@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './screens/login_screen.dart';
-import 'package:splashscreen/splashscreen.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -15,27 +15,22 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+    List<String> userids = [];
+    
+    @override
+    void initState(){
+      DatabaseReference dbref = FirebaseDatabase.instance.reference();
+      dbref.child('accounts').once().then((DataSnapshot snap){
+          for(var values in snap.value){
+            userids.add(values["userid"]);
+          }    
+      });
+      print(userids.length);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SplashScreen(
-      seconds: 3,
-      backgroundColor: Colors.white,
-      photoSize: 100.0,
-      
-      image: Image.asset(
-                  'assets/images/FSPS.jpg',
-                  ),
-      navigateAfterSeconds: LoginScreen(),
-      loaderColor: Colors.white,
-
-      title: Text("\nFirst Step Play School",
-            style: TextStyle(
-              color: Colors.green,
-              fontFamily: "Raleway",
-              fontSize: 30,
-              fontWeight: FontWeight.w800,    
-            ) 
-          ),
-    );
+    return LoginScreen();
   }
 }

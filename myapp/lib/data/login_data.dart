@@ -1,5 +1,5 @@
 class LoginData{
-  String userid , password , usertype;
+  String userid;
 
-  LoginData(this.userid, this.password, this.usertype);
+  LoginData(this.userid);
 }
