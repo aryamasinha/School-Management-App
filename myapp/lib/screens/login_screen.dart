@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import '../data/login_data.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
+}
+
+void initState(){
+    DatabaseReference dbref = FirebaseDatabase.instance.reference();
+    print(dbref);
 }
 
 class _LoginScreenState extends State<LoginScreen> {
