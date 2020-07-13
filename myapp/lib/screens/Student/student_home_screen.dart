@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class StudentHomeScreen extends StatelessWidget {
  
- const StudentHomeScreen();
+ String id;
+ 
+ StudentHomeScreen(this.id);
 
   @override
   Widget build(BuildContext context) {
@@ -18,34 +20,37 @@ class StudentHomeScreen extends StatelessWidget {
            ),
            child: Column(
              children: <Widget>[
-            Card(                     
-              child: Stack(
-                children: <Widget>[
-                  Opacity(
-                    opacity: 0.5,
-                                      child: Container(
-                      width: 300,
-                      height: 150,
-                      decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/result.png",),
-                        alignment: Alignment.bottomCenter,
+            InkWell(
+              onTap: (){ print("Card Clicked"); },
+                          child: Card(                     
+                child: Stack(
+                  children: <Widget>[
+                    Opacity(
+                      opacity: 0.5,
+                        child: Container(
+                        width: 300,
+                        height: 150,
+                        decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/result.png",),
+                          alignment: Alignment.bottomCenter,
+                        ),
                       ),
-                    ),
-                ),
                   ),
-                Center(
-                    child: Text("Result",
-                    style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 40,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: "Raleway"
-            ),),),
-                ],
-                ),
-        ), 
+                    ),
+                  Center(
+                      child: Text("Result",
+                      style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 40,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: "Raleway"
+              ),),),
+                  ],
+                  ),
+        ),
+            ), 
         SizedBox(height: 20,),
         Card(                     
               child: Stack(
