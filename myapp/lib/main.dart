@@ -17,20 +17,33 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
 
     List<String> userids = [];
+    List<String> password = [];
+    List<String> type = [];
     
     @override
     void initState(){
+      super.initState();
       DatabaseReference dbref = FirebaseDatabase.instance.reference();
       dbref.child('accounts').once().then((DataSnapshot snap){
           for(var values in snap.value){
             userids.add(values["userid"]);
-          }    
+          }   
       });
-      print(userids.length);
+       dbref.child('accounts').once().then((DataSnapshot snap){
+          for(var values in snap.value){
+            password.add(values["password"]);
+          }   
+      });
+       dbref.child('accounts').once().then((DataSnapshot snap){
+          for(var values in snap.value){
+            type.add(values["type"]);
+          }   
+      });
   }
+
 
   @override
   Widget build(BuildContext context) {
-    return LoginScreen();
+    return LoginScreen(userids,password,type);
   }
 }

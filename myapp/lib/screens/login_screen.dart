@@ -1,15 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:schoolapp/screens/Student/get_started_student.dart';
 
+class LoginScreen extends StatelessWidget {
 
+  List<String> userids = [];
+  List<String> password = [];
+  List<String> type = [];
 
-class LoginScreen extends StatefulWidget {
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
+  TextEditingController useridController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
 
+  LoginScreen(this.userids,this.password,this.type);
 
+  bool _isValidDetail(){ 
+    for(int i=0;i<userids.length;i++){
+      if(userids[i] == useridController.text){
+        if(password[i] == passwordController.text){
+            return true;
+        }
+      }
+    }
+    return false;
+  }
 
-class _LoginScreenState extends State<LoginScreen> {
+    void _sendDataToNextScreen(BuildContext context) {
+      if(_isValidDetail()){
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StudentGetStarted(password, userids, type),
+        ));
+      }
+  }
+
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,6 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   top: 20,
                   bottom: 20,
                 ),
+                
                 child: Text("Login",
                 style: TextStyle(
                   fontFamily: "Raleway",
@@ -63,6 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             left: 8,
                           ),
                           child: TextField(
+                            controller: useridController,
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Enter LoginID',
@@ -78,6 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             left: 8,
                           ),
                           child: TextField(
+                            controller: passwordController,
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Enter password',
@@ -103,7 +130,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   
                   width: double.infinity,
                 child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _sendDataToNextScreen(context);
+                  },
                   textColor: Colors.purple,
                   child: const Text(
                     'Login',
@@ -114,7 +143,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-        ),
+         ), 
+
         ),
       ),
     ); 

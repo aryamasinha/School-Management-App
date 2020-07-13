@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+
+class StudentGetStarted extends StatelessWidget {
+
+  List<String> userids = [];
+  List<String> password = [];
+  List<String> type = [];
+
+  StudentGetStarted(this.password,this.userids,this.type);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
