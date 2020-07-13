@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:schoolapp/screens/Student/student_attendance_screen.dart';
+import 'package:schoolapp/screens/Student/student_fee_screen.dart';
+import 'package:schoolapp/screens/Student/student_result_screen.dart';
 
 class StudentHomeScreen extends StatelessWidget {
  
@@ -18,7 +21,13 @@ class StudentHomeScreen extends StatelessWidget {
            child: Column(
              children: <Widget>[
             InkWell(
-              onTap: (){ print("Card Clicked"); },
+              onTap: (){
+                    Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StudentResultScreen()
+        ));
+               },
                           child: Card(                     
                 child: Stack(
                   children: <Widget>[
@@ -49,62 +58,80 @@ class StudentHomeScreen extends StatelessWidget {
         ),
             ), 
         SizedBox(height: 20,),
-        Card(                     
-              child: Stack(
-                children: <Widget>[
-                  Opacity(
-                    opacity: 0.5,
-                                      child: Container(
-                      width: 300,
-                      height: 150,
-                      decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/fee.jpeg",),
-                        alignment: Alignment.bottomCenter,
+        InkWell(
+          onTap: (){
+                  Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StudentFeeScreen()
+        ));
+          }  ,
+                  child: Card(                     
+                child: Stack(
+                  children: <Widget>[
+                    Opacity(
+                      opacity: 0.5,
+                                        child: Container(
+                        width: 300,
+                        height: 150,
+                        decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/fee.jpeg",),
+                          alignment: Alignment.bottomCenter,
+                        ),
                       ),
-                    ),
-                ),
                   ),
-                Center(
-                    child: Text("Fee",
-                    style: TextStyle(
-                    color: Colors.green,
-                    fontSize: 40,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: "Raleway"
-            ),),),
-                ],
-                ),
+                    ),
+                  Center(
+                      child: Text("Fee",
+                      style: TextStyle(
+                      color: Colors.green,
+                      fontSize: 40,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: "Raleway"
+              ),),),
+                  ],
+                  ),
+          ),
         ), 
          SizedBox(height: 20,),
-        Card(                     
-              child: Stack(
-                children: <Widget>[
-                  Opacity(
-                    opacity: 0.5,
-                                      child: Container(
-                      width: 300,
-                      height: 150,
-                      decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/attendance.png",),
-                        alignment: Alignment.bottomCenter,
+        InkWell(
+          onTap: (){
+                Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StudentAttendanceScreen()
+        ));
+          },
+                  child: Card(                     
+                child: Stack(
+                  children: <Widget>[
+                    Opacity(
+                      opacity: 0.5,
+                                        child: Container(
+                        width: 300,
+                        height: 150,
+                        decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/attendance.png",),
+                          alignment: Alignment.bottomCenter,
+                        ),
                       ),
-                    ),
-                ),
                   ),
-                Center(
-                    child: Text("Attendance",
-                    style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 40,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: "Raleway"
-            ),),),
-                ],
-                ),
+                    ),
+                  Center(
+                      child: Text("Attendance",
+                      style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 40,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: "Raleway"
+              ),),),
+                  ],
+                  ),
+          ),
         ), 
         ],
         ),
