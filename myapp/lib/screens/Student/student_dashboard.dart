@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
 
-/// This Widget is the main application widget.
-class MyApp extends StatelessWidget {
-  static const String _title = 'Flutter Code Sample';
+class StudentDashboard extends StatelessWidget {
+  String id;
 
+  StudentDashboard(this.id);
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
+    
       home: MyStatefulWidget(),
     );
   }

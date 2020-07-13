@@ -1,10 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:schoolapp/screens/Student/student_dashboard.dart';
 
 class StudentDetail extends StatelessWidget {
    
   String id;
-
+  TextEditingController nameController = new TextEditingController();
+  TextEditingController fathernameController = new TextEditingController();
+  TextEditingController mothernameController = new TextEditingController();
+  TextEditingController classController = new TextEditingController();
+  TextEditingController photourlController = new TextEditingController();
   StudentDetail(this.id);
+
+  
+
+  void _pushDataAndNavigate(BuildContext context){
+    var data = {
+    "class" : classController.text,
+    "fathers-name" : fathernameController.text,
+    "mothers-name" : mothernameController.text,
+    "name" : nameController.text,
+    "photo-url" :photourlController.text
+    };
+    DatabaseReference dbref = new FirebaseDatabase().reference();
+    dbref.child('student-detail').child('$id').push().set(data);
+    Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StudentDashboard(id),
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +78,7 @@ class StudentDetail extends StatelessWidget {
                        right: 10,
                      ),
                      child: TextField(
+                       controller: nameController,
                         decoration: InputDecoration(
                           hintText: 'Enter name',
                           hintStyle: TextStyle(
@@ -71,6 +97,7 @@ class StudentDetail extends StatelessWidget {
                        right: 10,
                      ),
                      child: TextField(
+                       controller: fathernameController,
                         decoration: InputDecoration(
                           hintText: 'Enter Father\'s Name',
                           hintStyle: TextStyle(
@@ -89,6 +116,7 @@ class StudentDetail extends StatelessWidget {
                        right: 10,
                      ),
                      child: TextField(
+                       controller: mothernameController,
                         decoration: InputDecoration(
                           hintText: 'Enter Mother\'s Name',
                           hintStyle: TextStyle(
@@ -107,6 +135,7 @@ class StudentDetail extends StatelessWidget {
                        right: 10,
                      ),
                      child: TextField(
+                       controller: classController,
                         decoration: InputDecoration(
                           hintText: 'Enter Class',
                           hintStyle: TextStyle(
@@ -125,6 +154,7 @@ class StudentDetail extends StatelessWidget {
                        right: 10,
                      ),
                      child: TextField(
+                       controller: photourlController,
                         decoration: InputDecoration(
                           hintText: 'Enter your photo URL(drive/dropbox link)',
                           hintStyle: TextStyle(
@@ -143,7 +173,9 @@ class StudentDetail extends StatelessWidget {
             SizedBox(
                     width: double.infinity,
                     child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _pushDataAndNavigate(context);
+                    },
                     textColor: Colors.purple,
                     child: const Text(
                       'Submit',
