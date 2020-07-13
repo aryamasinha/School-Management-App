@@ -75,6 +75,7 @@ class TeacherDetail extends StatelessWidget {
                        right: 10,
                      ),
                      child: TextField(
+                        controller: nameController,
                         decoration: InputDecoration(
                           hintText: 'Enter name',
                           hintStyle: TextStyle(
@@ -93,6 +94,7 @@ class TeacherDetail extends StatelessWidget {
                        right: 10,
                      ),
                      child: TextField(
+                       controller: photourlController,
                         decoration: InputDecoration(
                           hintText: 'Enter your photo URL(drive/dropbox link)',
                           hintStyle: TextStyle(
