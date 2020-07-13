@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
+class StudentDetail extends StatelessWidget {
+   
+  String id;
 
+  StudentDetail(this.id);
 
   @override
   Widget build(BuildContext context) {
@@ -116,20 +119,23 @@ class MyApp extends StatelessWidget {
                    SizedBox(
                      height: 20,
                      ),
-                   Text("Upload your photograph"),
-                   SizedBox(
-                     height: 10,
+                                        Padding(
+                     padding: const EdgeInsets.only(
+                       left: 10,
+                       right: 10,
                      ),
-                   RaisedButton(
-                  onPressed: () {},
-                  textColor: Colors.purple,
-                  child: const Text(
-                    'Select an image',
-                    style: TextStyle(fontSize: 15)
-                  ),
-                ),
-                SizedBox(
-                     height: 10,
+                     child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Enter your photo URL(drive/dropbox link)',
+                          hintStyle: TextStyle(
+                            fontFamily: "Raleway",
+                            color: Colors.purple,
+                          ),
+                        ),
+                     ),
+                   ),
+                    SizedBox(
+                     height: 20,
                      ),
                 ],
               ),
