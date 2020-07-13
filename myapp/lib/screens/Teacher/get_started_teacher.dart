@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schoolapp/screens/Teacher/teacher_detail.dart';
 
 
 
@@ -30,7 +31,13 @@ class TeacherGetStarted extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                               child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                      Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TeacherDetail(id),
+                    ));
+                  },
                   textColor: Colors.purple,
                   child: const Text(
                     'Get Started',

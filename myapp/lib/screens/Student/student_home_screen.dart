@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 
 class StudentHomeScreen extends StatelessWidget {
  
- String id;
- 
- StudentHomeScreen(this.id);
-
+ const StudentHomeScreen();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

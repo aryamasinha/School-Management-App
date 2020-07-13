@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:schoolapp/screens/Teacher/teacher_home_screen.dart';
+import 'package:schoolapp/screens/Student/student_home_screen.dart';
+
 
 
 class StudentDashboard extends StatelessWidget {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class StudentHomeScreen extends StatelessWidget {
+class TeacherHomeScreen extends StatelessWidget {
  
- const StudentHomeScreen();
+ const TeacherHomeScreen();
 
   @override
   Widget build(BuildContext context) {

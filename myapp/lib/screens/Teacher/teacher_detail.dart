@@ -1,8 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:schoolapp/screens/Teacher/teacher_dashboard.dart';
 
-void main() => runApp(MyApp());
+class TeacherDetail extends StatelessWidget {
 
-class MyApp extends StatelessWidget {
+  String id;
+
+  TextEditingController nameController = new TextEditingController();
+  TextEditingController photourlController = new TextEditingController();
+
+
+  TeacherDetail(this.id);
+
+  void _pushDataAndNavigate(BuildContext context){
+    var data = {
+    "name" : nameController.text,
+    "photo-url" :photourlController.text
+    };
+    DatabaseReference dbref = new FirebaseDatabase().reference();
+    dbref.child('teacher-detail').child('$id').push().set(data);
+    Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TeacherDashBoard(id),
+        ));
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -60,21 +84,24 @@ class MyApp extends StatelessWidget {
                         ),
                      ),
                    ),     
-                   SizedBox(
-                     height: 40,
-                     ),
-                   Text("Upload your photograph"),
-                   SizedBox(
+                    SizedBox(
                      height: 10,
                      ),
-                   RaisedButton(
-                  onPressed: () {},
-                  textColor: Colors.purple,
-                  child: const Text(
-                    'Select an image',
-                    style: TextStyle(fontSize: 15)
-                  ),
-                ),
+                       Padding(
+                     padding: const EdgeInsets.only(
+                       left: 10,
+                       right: 10,
+                     ),
+                     child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Enter your photo URL(drive/dropbox link)',
+                          hintStyle: TextStyle(
+                            fontFamily: "Raleway",
+                            color: Colors.purple,
+                          ),
+                        ),
+                     ),
+                   ),
                 SizedBox(
                      height: 10,
                      ),
@@ -84,7 +111,9 @@ class MyApp extends StatelessWidget {
             SizedBox(
                     width: double.infinity,
                     child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _pushDataAndNavigate(context);
+                    },
                     textColor: Colors.purple,
                     child: const Text(
                       'Submit',

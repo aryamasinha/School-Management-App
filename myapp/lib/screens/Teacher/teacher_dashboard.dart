@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schoolapp/screens/Teacher/teacher_home_screen.dart';
 
 
 class TeacherDashBoard extends StatelessWidget {
@@ -26,18 +27,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
+    TeacherHomeScreen(),
     Text(
-      'Index 0: Home',
+      'Chat Feature',
       style: optionStyle,
     ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+   
   ];
 
   void _onItemTapped(int index) {
