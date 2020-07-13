@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:schoolapp/screens/Student/get_started_student.dart';
+import 'package:schoolapp/screens/Teacher/get_started_teacher.dart';
 
 class LoginScreen extends StatelessWidget {
 
   List<String> userids = [];
   List<String> password = [];
   List<String> type = [];
+  String id;
+  String userType;
+
 
   TextEditingController useridController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
@@ -16,6 +20,8 @@ class LoginScreen extends StatelessWidget {
     for(int i=0;i<userids.length;i++){
       if(userids[i] == useridController.text){
         if(password[i] == passwordController.text){
+            id =  userids[i];
+            userType = type[i];
             return true;
         }
       }
@@ -24,11 +30,18 @@ class LoginScreen extends StatelessWidget {
   }
 
     void _sendDataToNextScreen(BuildContext context) {
-      if(_isValidDetail()){
+      if(_isValidDetail() && (userType == "student")){
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => StudentGetStarted(password, userids, type),
+              builder: (context) => StudentGetStarted(id),
+        ));
+      }
+      else if(_isValidDetail() && (userType == "teacher")){
+         Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TeacherGetStarted(id),
         ));
       }
   }

@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 
 class StudentGetStarted extends StatelessWidget {
 
-  List<String> userids = [];
-  List<String> password = [];
-  List<String> type = [];
+  String id;
 
-  StudentGetStarted(this.password,this.userids,this.type);
+  StudentGetStarted(this.id);
 
   @override
   Widget build(BuildContext context) {

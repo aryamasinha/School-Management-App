@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+
+class TeacherGetStarted extends StatelessWidget {
+
+  String id;
+
+  TeacherGetStarted(this.id);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
