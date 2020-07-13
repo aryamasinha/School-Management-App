@@ -1,9 +1,32 @@
 import 'package:flutter/material.dart';
-void main() => runApp(MyApp());
+import 'package:firebase_database/firebase_database.dart';
 
+class TeacherResultScreen extends StatelessWidget {
 
-class MyApp extends StatelessWidget {
+  TextEditingController useridController = new TextEditingController();
+  TextEditingController englishMarksController = new TextEditingController();
+  TextEditingController hindiMarksController = new TextEditingController();
+  TextEditingController bengaliMarksController = new TextEditingController();
+  TextEditingController mathMarksController = new TextEditingController();
+  TextEditingController gkMarksController = new TextEditingController();
+  TextEditingController evsMarksController = new TextEditingController();
+  TextEditingController drawingMarksController = new TextEditingController();
 
+  void _pushDataAndNavigate(BuildContext context){
+    var data = {
+     "english" : englishMarksController.text,
+     "hindi" : hindiMarksController.text,
+     "bengali" :bengaliMarksController.text,
+     "math" : mathMarksController.text,
+      "gk" : gkMarksController.text,
+      "evs" : evsMarksController.text,
+      "drawing" : drawingMarksController.text,
+    }; 
+    DatabaseReference dbref = new FirebaseDatabase().reference();
+    String studentId = useridController.text;
+    dbref.child('student-marks').child('$studentId').push().set(data);
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +67,7 @@ class MyApp extends StatelessWidget {
                          right: 10,
                        ),
                        child: TextField(
+                         controller: useridController,
                           decoration: InputDecoration(
                             hintText: 'Enter Student ID',
                             hintStyle: TextStyle(
@@ -78,6 +102,7 @@ class MyApp extends StatelessWidget {
                  Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: TextField(
+                    controller: englishMarksController,
                           decoration: InputDecoration(
                             hintText: 'Enter Marks',
                             hintStyle: TextStyle(
@@ -100,6 +125,7 @@ class MyApp extends StatelessWidget {
                  Padding(
                   padding: const EdgeInsets.all(5.0),
                   child:TextField(
+                    controller: hindiMarksController,
                           decoration: InputDecoration(
                             hintText: 'Enter Marks',
                             hintStyle: TextStyle(
@@ -122,6 +148,7 @@ class MyApp extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child:TextField(
+                    controller: bengaliMarksController,
                           decoration: InputDecoration(
                             hintText: 'Enter Marks',
                             hintStyle: TextStyle(
@@ -144,6 +171,7 @@ class MyApp extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child:TextField(
+                    controller: mathMarksController,
                           decoration: InputDecoration(
                             hintText: 'Enter Marks',
                             hintStyle: TextStyle(
@@ -166,6 +194,7 @@ class MyApp extends StatelessWidget {
                Padding(
                   padding: const EdgeInsets.all(5.0),
                   child:TextField(
+                    controller: drawingMarksController,
                           decoration: InputDecoration(
                             hintText: 'Enter Marks',
                             hintStyle: TextStyle(
@@ -188,6 +217,7 @@ class MyApp extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child:TextField(
+                    controller: gkMarksController,
                           decoration: InputDecoration(
                             hintText: 'Enter Marks',
                             hintStyle: TextStyle(
@@ -210,6 +240,7 @@ class MyApp extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child:TextField(
+                    controller: evsMarksController,
                           decoration: InputDecoration(
                             hintText: 'Enter Marks',
                             hintStyle: TextStyle(
@@ -229,7 +260,9 @@ class MyApp extends StatelessWidget {
                SizedBox(
                       width: double.infinity,
                       child: RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _pushDataAndNavigate(context);
+                      },
                       textColor: Colors.purple,
                       child: const Text(
                         'Submit',

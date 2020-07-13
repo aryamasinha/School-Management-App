@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 
-void main() => runApp(MyApp());
 
-
-class MyApp extends StatelessWidget {
+class TeacherFeeScreen extends StatelessWidget {
 
 
   @override
