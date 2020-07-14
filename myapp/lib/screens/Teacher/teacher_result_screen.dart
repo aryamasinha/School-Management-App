@@ -13,24 +13,19 @@ class TeacherResultScreen extends StatefulWidget {
 
 class _TeacherResultScreenState extends State<TeacherResultScreen> {
   TextEditingController useridController = new TextEditingController();
-
   TextEditingController englishMarksController = new TextEditingController();
-
   TextEditingController hindiMarksController = new TextEditingController();
-
   TextEditingController bengaliMarksController = new TextEditingController();
-
   TextEditingController mathMarksController = new TextEditingController();
-
   TextEditingController gkMarksController = new TextEditingController();
-
   TextEditingController evsMarksController = new TextEditingController();
   TextEditingController drawingMarksController = new TextEditingController();
 
 String warningText = 'Scroll Down';
 
 bool allDataFilled(){
-     if(drawingMarksController.text != '' 
+     if (useridController.text != '' &&
+     drawingMarksController.text != '' 
      && englishMarksController.text != '' 
      && hindiMarksController.text != ''
      && gkMarksController.text != ''
@@ -39,8 +34,9 @@ bool allDataFilled(){
      && evsMarksController.text != ''){
        return true;
      }
-     else { return false;
-    } 
+     else{
+        return false;
+      } 
    }
 
 void changeTextSuccess() {
@@ -50,15 +46,11 @@ void changeTextSuccess() {
     });
     
   }
-  void changeTextWarning() {
- 
-    setState(() {
-      warningText = "Please enter marks in all Subjects!";
-    });
-    
-  }
+
   void _pushDataAndNavigate(BuildContext context){
-    var data = {
+
+    if(allDataFilled()){
+      var data = {
      "english" : englishMarksController.text,
      "hindi" : hindiMarksController.text,
      "bengali" :bengaliMarksController.text,
@@ -77,12 +69,11 @@ void changeTextSuccess() {
     gkMarksController.clear();
     evsMarksController.clear();
     drawingMarksController.clear();
-    if(allDataFilled()){
-      changeTextSuccess();
+    useridController.clear();
+    changeTextSuccess();
+    
     }
-    else{
-      changeTextWarning();
-    }
+    
   }
 
    
@@ -345,11 +336,7 @@ void changeTextSuccess() {
                       width: double.infinity,
                       child: RaisedButton(
                       onPressed: () {
-                       Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => TeacherHomeScreen()
-        ));
+                       Navigator.pop(context);
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             },
                       textColor: Colors.purple,
                       child: const Text(
