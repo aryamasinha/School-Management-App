@@ -1,8 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 
 
-class TeacherAttendanceScreen extends StatelessWidget {
+class TeacherAttendanceScreen extends StatefulWidget {
+
+  @override
+  _TeacherAttendanceScreenState createState() => _TeacherAttendanceScreenState();
+}
+
+class _TeacherAttendanceScreenState extends State<TeacherAttendanceScreen> {
+  String _selectedDay = 'Monday';
+  TextEditingController useridController = new TextEditingController();
+  String _selectedAttendance = 'Absent';
+
+   void _pushDataAndNavigate(BuildContext context){
+    var data = {
+     "day" : _selectedDay,
+     "status" : _selectedAttendance,
+    }; 
+    DatabaseReference dbref = new FirebaseDatabase().reference();
+    String studentId = useridController.text;
+    dbref.child('student-attendance-details').child('$studentId').push().set(data);
+    
+  }
 
 
   @override
@@ -15,9 +36,9 @@ class TeacherAttendanceScreen extends StatelessWidget {
           padding: const EdgeInsets.only(
             left: 20,
             right: 20,
+            top :100,
           ),
-          child:SingleChildScrollView(
-                      child: Column(
+          child: Column(
               children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(
@@ -41,6 +62,7 @@ class TeacherAttendanceScreen extends StatelessWidget {
                        right: 10,
                      ),
                      child: TextField(
+                       controller: useridController,
                         decoration: InputDecoration(
                           hintText: 'Enter Student ID',
                           hintStyle: TextStyle(
@@ -53,50 +75,44 @@ class TeacherAttendanceScreen extends StatelessWidget {
                    SizedBox(
                      height: 20,
                    ),
-                   RaisedButton(
-                    onPressed: () {},
-                    textColor: Colors.purple,
-                    child: const Text(
-                      'Choose Day',
-                      style: TextStyle(fontSize: 15)
+                   Text("Choose Day"),
+                   new DropdownButton<String>(
+                       hint:  Text("Select Day"),
+                       value: _selectedDay,
+                      items: <String>['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].map((String value) {
+                            return new DropdownMenuItem<String>(
+                                    value: value,
+                                    child: new Text(value),
+                            );
+                       }).toList(),
+                      onChanged:(String newValue) {
+      setState(() {
+          _selectedDay = newValue;
+     });
+},
                     ),
-                  ),
                    SizedBox(
+                     height: 20,
+                   ),
+                    Text("Choose Attendance Status"),
+                SizedBox(
                      height: 10,
                      ),
-                    Text("Mark attendance"),
-                   Row(
-                     children: <Widget>[
-                       Padding(
-                         padding: const EdgeInsets.only(
-                           left: 40,
-                           right: 50,
-                         ),
-                         child: RaisedButton(
-                  onPressed: () {},
-                  textColor: Colors.purple,
-                  child: const Text(
-                          'Present',
-                          style: TextStyle(fontSize: 15)
-                  ),
-                ),
-                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 50,
-                          right: 20,
-                        ),
-                        child: RaisedButton(
-                  onPressed: () {},
-                  textColor: Colors.purple,
-                  child: const Text(
-                          'Absent',
-                          style: TextStyle(fontSize: 15)
-                  ),
-                ),
-                      ),
-                     ],
-                   ),
+                     new DropdownButton<String>(
+                       hint:  Text("Select Status"),
+                       value: _selectedAttendance,
+  items: <String>['Present','Absent'].map((String value) {
+    return new DropdownMenuItem<String>(
+      value: value,
+      child: new Text(value),
+    );
+  }).toList(),
+  onChanged: (String newValue) {
+    setState(() {
+      _selectedAttendance = newValue;
+     });
+},
+),
                 SizedBox(
                      height: 10,
                      ),
@@ -106,7 +122,9 @@ class TeacherAttendanceScreen extends StatelessWidget {
             SizedBox(
                     width: double.infinity,
                     child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _pushDataAndNavigate(context);
+                    },
                     textColor: Colors.purple,
                     child: const Text(
                       'Submit',
@@ -120,7 +138,7 @@ class TeacherAttendanceScreen extends StatelessWidget {
           )
         )
       )
-      )
+      
     );
   }
 } 

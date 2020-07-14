@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:schoolapp/screens/Student/student_dashboard.dart';
+import 'package:schoolapp/screens/Student/student_home_screen.dart';
 
 class StudentDetail extends StatelessWidget {
    
@@ -27,7 +27,7 @@ class StudentDetail extends StatelessWidget {
     Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => StudentDashboard(id),
+              builder: (context) => StudentHomeScreen(id),
         ));
   }
 
@@ -47,7 +47,7 @@ class StudentDetail extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(
-                    top: 50,
+                    top: 20,
                     bottom: 20,
                   ),
                   child: Image.asset(

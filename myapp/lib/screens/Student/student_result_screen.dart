@@ -1,239 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:schoolapp/data/marks_data.dart';
+import 'package:schoolapp/screens/Student/student_result_widget.dart';
 
+class StudentResultScreen extends StatefulWidget {
 
-class StudentResultScreen extends StatelessWidget {
+  String id;
+  StudentResultScreen(this.id);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-      backgroundColor: Color.fromRGBO(220, 155, 253, 1),
-      body: Center(
-         child: Padding(
-           padding: const EdgeInsets.only(
-             left: 20,
-             right: 20,
-             bottom: 80,
-             top: 50,
-           ),
-           child: Card(
-             child: Column(
-               children: <Widget>[
-                 Padding(
-                   padding: const EdgeInsets.only(
-                     top: 20,
-                   ),
-                   child: Text(
-                     "Result",
-                     style: TextStyle(
-                       color: Colors.purple,
-                       fontFamily: "Cursive",
-                       fontSize: 30,
-                       fontWeight: FontWeight.w800,
-                     ),
-                   ),
-                 ),
-                 Container(
-                   child: Row(
-                     children: <Widget>[
-                       Padding(
-                         padding: const EdgeInsets.only(
-                           top: 10,
-                           left: 50,
-                           right: 50,
-                         ),
-                         child: Text(
-                           "Subject",
-                           style: TextStyle(
-                             fontSize: 22,
-                           ),
-                         ),
-                       ),
-                       Padding(
-                         padding: const EdgeInsets.only(
-                           top: 10,
-                           left: 50,
-                           right: 50,
-                         ),
-                         child: Text(
-                           "Marks",
-                           style: TextStyle(
-                             fontSize: 22,
-                           ),
-                         ),
-                       )
-                     ],
-                   ),
-                 ),
-                 Padding(
-                   padding: const EdgeInsets.all(10.0),
-                   child: Table(
-          border: TableBorder.all(color: Colors.black),
-          children: [
-            TableRow(children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text('English',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-            ]),
-             TableRow(children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('Hindi',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-            ]),
-             TableRow(children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('Bengali',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-            ]),
-             TableRow(children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('Math',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-            ]),
-             TableRow(children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('Drawing',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-            ]),
-             TableRow(children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('G.K.',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-            ]),
-             TableRow(children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('E.V.S.',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('',
-                   style: TextStyle(
-                     fontSize: 20,
-                   ),),
-              ),
-            ])
-          ]
-        ),
-                 ),
-        SizedBox(
-          height: 10,
-        ),
-                 Padding(
-                   padding: const EdgeInsets.all(10.0),
-                   child: Table(
-          border: TableBorder.all(color: Colors.black),
-          children: [
-            TableRow(children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('Total Marks',
-                 style: TextStyle(
-                   fontSize: 20,
-                 ),),
-              ),
-               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('',
-                 style: TextStyle(
-                   fontSize: 20,
-                 ),),
-              ),
-            ]),
-             TableRow(children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('Percentage',
-                 style: TextStyle(
-                   fontSize: 20,
-                 ),),
-              ),
-               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('',
-                 style: TextStyle(
-                   fontSize: 20,
-                 ),),
-              ),
-            ])
-          ],
-        ),
-                 ),
+  _StudentResultScreenState createState() => _StudentResultScreenState();
+}
+ 
+ 
+class _StudentResultScreenState extends State<StudentResultScreen> {
 
-               ],
-             ),
-             ),
-           ),
-      ),      
-      ));
+     var bengalimarks , hindimarks, englishmarks, mathmarks, evsmarks,gkmarks,drawingmarks;
+      Marks marks;
+    
+    @override
+    void initState(){
+      super.initState();
+      DatabaseReference dbref = FirebaseDatabase.instance.reference();
+      dbref.child('student-marks').child('student001').once().then((DataSnapshot snap){
+         var keys = snap.value.keys;
+         var data = snap.value;
+         for(var key in keys){
+          bengalimarks = data[key]["bengali"];
+          drawingmarks =  data[key]["drawing"];
+          englishmarks =  data[key]["english"];
+          evsmarks =  data[key]["evs"];
+          gkmarks =  data[key]["gk"];
+          hindimarks = data[key]["hindi"];
+          mathmarks = data[key]["math"];
+         }
+        
+        marks = new Marks(evsmarks, gkmarks, englishmarks, bengalimarks, drawingmarks, mathmarks, hindimarks)  ;   
+      });
+      
+  }
+  @override
+  Widget build(BuildContext context) {
+    return new ListView.builder(
+      itemBuilder: (_,index){
+        return ResultWidget(marks);
+      },
+    );
   }            
 }

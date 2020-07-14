@@ -1,9 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
+
+class TeacherFeeScreen extends StatefulWidget {
+  @override
+  _TeacherFeeScreenState createState() => _TeacherFeeScreenState();
+}
 
 
 
-class TeacherFeeScreen extends StatelessWidget {
+class _TeacherFeeScreenState extends State<TeacherFeeScreen> {
+  String _selectedMonth = 'January';
+  String _selectedFeeStatus = 'Unpaid';
+  TextEditingController useridController = new TextEditingController();
 
+  void _pushDataAndNavigate(BuildContext context){
+    var data = {
+     "month" : _selectedMonth,
+     "status" : _selectedFeeStatus,
+    }; 
+    DatabaseReference dbref = new FirebaseDatabase().reference();
+    String studentId = useridController.text;
+    dbref.child('student-fee-details').child('$studentId').push().set(data);
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +34,9 @@ class TeacherFeeScreen extends StatelessWidget {
           padding: const EdgeInsets.only(
             left: 20,
             right: 20,
+            top: 100,
           ),
-          child:SingleChildScrollView(
-                      child: Column(
+          child:Column(
               children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(
@@ -41,6 +60,7 @@ class TeacherFeeScreen extends StatelessWidget {
                        right: 10,
                      ),
                      child: TextField(
+                       controller: useridController,
                         decoration: InputDecoration(
                           hintText: 'Enter Student ID',
                           hintStyle: TextStyle(
@@ -53,40 +73,45 @@ class TeacherFeeScreen extends StatelessWidget {
                    SizedBox(
                      height: 20,
                    ),
-                    Text("Enter Fee Payment status"),
-                   Row(
-                     children: <Widget>[
-                       Padding(
-                         padding: const EdgeInsets.only(
-                           left: 40,
-                           right: 50,
-                         ),
-                         child: RaisedButton(
-                  onPressed: () {},
-                  textColor: Colors.purple,
-                  child: const Text(
-                          'Paid',
-                          style: TextStyle(fontSize: 15)
-                  ),
-                ),
-                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 50,
-                          right: 20,
-                        ),
-                        child: RaisedButton(
-                  onPressed: () {},
-                  textColor: Colors.purple,
-                  child: const Text(
-                          'Unpaid',
-                          style: TextStyle(fontSize: 15)
-                  ),
-                ),
-                      ),
-                     ],
+                   Text("Choose Month"),
+                   new DropdownButton<String>(
+                       hint:  Text("Select Month"),
+                       value: _selectedMonth,
+                      items: <String>['January', 'February', 'March', 'April', 'May' ,'June' , 'July', 'August','September','October','November','December'].map((String value) {
+                            return new DropdownMenuItem<String>(
+                                    value: value,
+                                    child: new Text(value),
+                            );
+                       }).toList(),
+                      onChanged:(String newValue) {
+      setState(() {
+          _selectedMonth = newValue;
+     });
+},
+                    ),
+                   SizedBox(
+                     height: 20,
                    ),
+                    Text("Choose Fee Payment status"),
                 SizedBox(
+                     height: 10,
+                     ),
+                     new DropdownButton<String>(
+                       hint:  Text("Select Status"),
+                       value: _selectedFeeStatus,
+  items: <String>['Paid','Unpaid'].map((String value) {
+    return new DropdownMenuItem<String>(
+      value: value,
+      child: new Text(value),
+    );
+  }).toList(),
+  onChanged: (String newValue) {
+    setState(() {
+      _selectedFeeStatus = newValue;
+     });
+},
+),
+SizedBox(
                      height: 10,
                      ),
                 ],
@@ -95,7 +120,9 @@ class TeacherFeeScreen extends StatelessWidget {
             SizedBox(
                     width: double.infinity,
                     child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _pushDataAndNavigate(context);
+                    },
                     textColor: Colors.purple,
                     child: const Text(
                       'Submit',
@@ -109,7 +136,7 @@ class TeacherFeeScreen extends StatelessWidget {
           )
         )
       )
-      )
+      
     );
   }
 } 

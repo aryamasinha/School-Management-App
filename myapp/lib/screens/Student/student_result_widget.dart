@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:schoolapp/data/marks_data.dart';
 
-
-class StudentAttendanceScreen extends StatelessWidget {
-
-String id;
-
-StudentAttendanceScreen(this.id);
-
-  @override
-  Widget build(BuildContext context) {
+Widget ResultWidget(Marks marks){
     return MaterialApp(
       home: Scaffold(
       backgroundColor: Color.fromRGBO(220, 155, 253, 1),
@@ -29,7 +22,7 @@ StudentAttendanceScreen(this.id);
                        top: 20,
                      ),
                      child: Text(
-                       "Attendance",
+                       "Result",
                        style: TextStyle(
                          color: Colors.purple,
                          fontFamily: "Cursive",
@@ -48,7 +41,7 @@ StudentAttendanceScreen(this.id);
                              right: 50,
                            ),
                            child: Text(
-                             "Day",
+                             "Subject",
                              style: TextStyle(
                                fontSize: 22,
                              ),
@@ -57,13 +50,13 @@ StudentAttendanceScreen(this.id);
                          Padding(
                            padding: const EdgeInsets.only(
                              top: 10,
-                             left: 70,
+                             left: 50,
                              right: 50,
                            ),
                            child: Text(
-                             "Present/\nAbsent",
+                             "Marks",
                              style: TextStyle(
-                               fontSize: 20,
+                               fontSize: 22,
                              ),
                            ),
                          )
@@ -78,7 +71,39 @@ StudentAttendanceScreen(this.id);
               TableRow(children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text('Monday',
+                  child: Text('English',
+                     style: TextStyle(
+                       fontSize: 20,
+                     ),),
+                ),
+                 Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text('${marks.englishmarks}',
+                     style: TextStyle(
+                       fontSize: 20,
+                     ),),
+                ),
+              ]),
+               TableRow(children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text('Hindi',
+                     style: TextStyle(
+                       fontSize: 20,
+                     ),),
+                ),
+                 Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text('${marks.hindimarks}',
+                     style: TextStyle(
+                       fontSize: 20,
+                     ),),
+                ),
+              ]),
+               TableRow(children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text('Bengali',
                      style: TextStyle(
                        fontSize: 20,
                      ),),
@@ -94,7 +119,7 @@ StudentAttendanceScreen(this.id);
                TableRow(children: [
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Text('Tuesday',
+                  child: Text('Math',
                      style: TextStyle(
                        fontSize: 20,
                      ),),
@@ -110,7 +135,7 @@ StudentAttendanceScreen(this.id);
                TableRow(children: [
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Text('Wednesday',
+                  child: Text('Drawing',
                      style: TextStyle(
                        fontSize: 20,
                      ),),
@@ -126,7 +151,7 @@ StudentAttendanceScreen(this.id);
                TableRow(children: [
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Text('Thursday',
+                  child: Text('G.K.',
                      style: TextStyle(
                        fontSize: 20,
                      ),),
@@ -142,7 +167,7 @@ StudentAttendanceScreen(this.id);
                TableRow(children: [
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Text('Friday',
+                  child: Text('E.V.S.',
                      style: TextStyle(
                        fontSize: 20,
                      ),),
@@ -154,18 +179,33 @@ StudentAttendanceScreen(this.id);
                        fontSize: 20,
                      ),),
                 ),
-              ]),
+              ])
           ]
         ),
-      ),
-      SizedBox(
+                   ),
+        SizedBox(
           height: 10,
         ),
-        ],)
-        ,),
+                   SizedBox(
+                width: double.infinity,
+                              child: RaisedButton(
+                  onPressed: () {
+                    
+                  },
+                  textColor: Colors.purple,
+                  child: const Text(
+                    'Check your Marks',
+                    style: TextStyle(fontSize: 20)
+                  ),
+                ),
+              ),
+            
+          ],
+        ),
+                   ),
+               ),
+               ),
            ),
-                 ),),
-             ),
-    );
-  }            
-}
+           ),
+      );
+  }
