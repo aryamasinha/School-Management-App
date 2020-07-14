@@ -1,17 +1,62 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:schoolapp/screens/Teacher/teacher_dashboard.dart';
+import 'package:schoolapp/screens/Teacher/teacher_home_screen.dart';
 
-class TeacherResultScreen extends StatelessWidget {
+class TeacherResultScreen extends StatefulWidget {
 
+  @override
+  _TeacherResultScreenState createState() => _TeacherResultScreenState();
+}
+
+class _TeacherResultScreenState extends State<TeacherResultScreen> {
   TextEditingController useridController = new TextEditingController();
+
   TextEditingController englishMarksController = new TextEditingController();
+
   TextEditingController hindiMarksController = new TextEditingController();
+
   TextEditingController bengaliMarksController = new TextEditingController();
+
   TextEditingController mathMarksController = new TextEditingController();
+
   TextEditingController gkMarksController = new TextEditingController();
+
   TextEditingController evsMarksController = new TextEditingController();
   TextEditingController drawingMarksController = new TextEditingController();
 
+String warningText = 'Scroll Down';
+
+bool allDataFilled(){
+     if(drawingMarksController.text != '' 
+     && englishMarksController.text != '' 
+     && hindiMarksController.text != ''
+     && gkMarksController.text != ''
+     && drawingMarksController.text != ''
+     && bengaliMarksController.text != ''
+     && evsMarksController.text != ''){
+       return true;
+     }
+     else { return false;
+    } 
+   }
+
+void changeTextSuccess() {
+ 
+    setState(() {
+      warningText = "Submitted Successfully!";
+    });
+    
+  }
+  void changeTextWarning() {
+ 
+    setState(() {
+      warningText = "Please enter marks in all Subjects!";
+    });
+    
+  }
   void _pushDataAndNavigate(BuildContext context){
     var data = {
      "english" : englishMarksController.text,
@@ -25,8 +70,22 @@ class TeacherResultScreen extends StatelessWidget {
     DatabaseReference dbref = new FirebaseDatabase().reference();
     String studentId = useridController.text;
     dbref.child('student-marks').child('$studentId').push().set(data);
-    
+    englishMarksController.clear();
+    hindiMarksController.clear();
+    bengaliMarksController.clear();
+    mathMarksController.clear();
+    gkMarksController.clear();
+    evsMarksController.clear();
+    drawingMarksController.clear();
+    if(allDataFilled()){
+      changeTextSuccess();
+    }
+    else{
+      changeTextWarning();
+    }
   }
+
+   
 
   @override
   Widget build(BuildContext context) {
@@ -270,15 +329,28 @@ class TeacherResultScreen extends StatelessWidget {
                       ),
                     ),
               ),
-              SizedBox(
-                height: 10,
-              ),
+
+                SizedBox(height: 10),
+                Center(
+                  child: Text(
+                          '${warningText}',
+                          style: TextStyle(
+                            color: Colors.red
+                          ),
+                          ),
+                ),
+              SizedBox(height: 10),
+              
                SizedBox(
                       width: double.infinity,
                       child: RaisedButton(
                       onPressed: () {
-                      
-                      },
+                       Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TeacherHomeScreen()
+        ));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            },
                       textColor: Colors.purple,
                       child: const Text(
                         'Go to DashBoard',

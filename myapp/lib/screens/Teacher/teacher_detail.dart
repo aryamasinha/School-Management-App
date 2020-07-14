@@ -3,30 +3,56 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:schoolapp/screens/Teacher/teacher_dashboard.dart';
 import 'package:schoolapp/screens/Teacher/teacher_home_screen.dart';
 
-class TeacherDetail extends StatelessWidget {
+class TeacherDetail extends StatefulWidget {
 
   String id;
-
-  TextEditingController nameController = new TextEditingController();
-  TextEditingController photourlController = new TextEditingController();
-
-
   TeacherDetail(this.id);
 
+  
+
+  @override
+  _TeacherDetailState createState() => _TeacherDetailState();
+}
+
+class _TeacherDetailState extends State<TeacherDetail> {
+  TextEditingController nameController = new TextEditingController();
+  TextEditingController photourlController = new TextEditingController();
+  String warningtText = '';
+
+  bool _allDetailsVaild(){
+    if(nameController.text != '' && photourlController.text != ''){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  void changeText() {
+
+    setState(() {
+     warningtText = "Please enter all the details!";
+    });
+    
+  }
+
   void _pushDataAndNavigate(BuildContext context){
+    if(!_allDetailsVaild()){
+      changeText();
+      return;
+    }
     var data = {
     "name" : nameController.text,
     "photo-url" :photourlController.text
     };
     DatabaseReference dbref = new FirebaseDatabase().reference();
-    dbref.child('teacher-detail').child('$id').push().set(data);
+    dbref.child('teacher-detail').child('${widget.id}').push().set(data);
     Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => TeacherHomeScreen()
         ));
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -111,6 +137,13 @@ class TeacherDetail extends StatelessWidget {
                 ],
               ),
             ),
+             SizedBox(height: 10),
+                Text('$warningtText',
+                        style: TextStyle(
+                          color: Colors.red
+                        ),
+                        ),
+              SizedBox(height: 10),
             SizedBox(
                     width: double.infinity,
                     child: RaisedButton(

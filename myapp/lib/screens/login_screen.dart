@@ -2,26 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:schoolapp/screens/Student/get_started_student.dart';
 import 'package:schoolapp/screens/Teacher/get_started_teacher.dart';
 
-class LoginScreen extends StatelessWidget {
+
+
+
+class LoginScreen extends StatefulWidget {
 
   List<String> userids = [];
   List<String> password = [];
   List<String> type = [];
-  String id;
-  String userType;
-
-
-  TextEditingController useridController = new TextEditingController();
-  TextEditingController passwordController = new TextEditingController();
 
   LoginScreen(this.userids,this.password,this.type);
 
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  String id;
+
+  String userType;
+
+  String warningText = ' ';
+
+  TextEditingController useridController = new TextEditingController();
+
+  TextEditingController passwordController = new TextEditingController();
+
   bool _isValidDetail(){ 
-    for(int i=0;i<userids.length;i++){
-      if(userids[i] == useridController.text){
-        if(password[i] == passwordController.text){
-            id =  userids[i];
-            userType = type[i];
+    for(int i=0;i<widget.userids.length;i++){
+      if(widget.userids[i] == useridController.text){
+        if(widget.password[i] == passwordController.text){
+            id =  widget.userids[i];
+            userType = widget.type[i];
             return true;
         }
       }
@@ -44,9 +56,19 @@ class LoginScreen extends StatelessWidget {
               builder: (context) => TeacherGetStarted(id),
         ));
       }
+      else{
+        changeText(); 
+      }
   }
 
-  
+  void changeText() {
+
+    setState(() {
+     warningText = "Invalid Credentials. Please Try again!";
+    });
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -117,6 +139,7 @@ class LoginScreen extends StatelessWidget {
                             left: 8,
                           ),
                           child: TextField(
+                            obscureText: true,
                             controller: passwordController,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -129,11 +152,20 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         
+                      
                       ],
                   ),
                 ),
               )
               ),
+              SizedBox(height: 10),
+                Text(
+                        '${warningText}',
+                        style: TextStyle(
+                          color: Colors.red
+                        ),
+                        ),
+              SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.only(
                   right: 20,
