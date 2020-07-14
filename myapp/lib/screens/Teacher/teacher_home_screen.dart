@@ -148,6 +148,18 @@ class TeacherHomeScreen extends StatelessWidget {
                     ),
           ),
         ), 
+         SizedBox(height: 20),
+         SizedBox(
+                width: double.infinity,
+                              child: RaisedButton(
+                  onPressed: () {},
+                  textColor: Colors.purple,
+                  child: const Text(
+                    'Go to Chat Screen',
+                    style: TextStyle(fontSize: 20)
+                  ),
+                ),
+              ), 
         ],
         ),
            ),

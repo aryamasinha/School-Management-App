@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:schoolapp/screens/Teacher/teacher_dashboard.dart';
+import 'package:schoolapp/screens/Teacher/teacher_home_screen.dart';
 
 class TeacherDetail extends StatelessWidget {
 
@@ -22,7 +23,7 @@ class TeacherDetail extends StatelessWidget {
     Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => TeacherDashBoard(id),
+              builder: (context) => TeacherHomeScreen()
         ));
   }
 

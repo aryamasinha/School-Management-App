@@ -120,6 +120,9 @@ class _TeacherAttendanceScreenState extends State<TeacherAttendanceScreen> {
               ),
             ),
             SizedBox(
+              height: 20,
+            ),
+            SizedBox(
                     width: double.infinity,
                     child: RaisedButton(
                     onPressed: () {
@@ -128,6 +131,22 @@ class _TeacherAttendanceScreenState extends State<TeacherAttendanceScreen> {
                     textColor: Colors.purple,
                     child: const Text(
                       'Submit',
+                      style: TextStyle(fontSize: 20)
+                    ),
+                  ),
+            ),
+              SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+                    width: double.infinity,
+                    child: RaisedButton(
+                    onPressed: () {
+                      
+                    },
+                    textColor: Colors.purple,
+                    child: const Text(
+                      'Go to Dashboard',
                       style: TextStyle(fontSize: 20)
                     ),
                   ),

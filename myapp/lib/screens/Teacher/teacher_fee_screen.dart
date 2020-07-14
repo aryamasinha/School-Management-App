@@ -130,6 +130,20 @@ SizedBox(
                     ),
                   ),
             ),
+            SizedBox(height: 10,),
+                        SizedBox(
+                    width: double.infinity,
+                    child: RaisedButton(
+                    onPressed: () {
+                      
+                    },
+                    textColor: Colors.purple,
+                    child: const Text(
+                      'Go to DashBoard',
+                      style: TextStyle(fontSize: 20)
+                    ),
+                  ),
+            ),
               ],
 
             ),
