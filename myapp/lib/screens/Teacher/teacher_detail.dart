@@ -45,6 +45,7 @@ class _TeacherDetailState extends State<TeacherDetail> {
     "photo-url" :photourlController.text
     };
     DatabaseReference dbref = new FirebaseDatabase().reference();
+    dbref.child('teacher-detail').child('${widget.id}').remove();
     dbref.child('teacher-detail').child('${widget.id}').push().set(data);
     Navigator.push(
             context,

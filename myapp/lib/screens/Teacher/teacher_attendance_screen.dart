@@ -32,6 +32,7 @@ class _TeacherAttendanceScreenState extends State<TeacherAttendanceScreen> {
     }; 
     DatabaseReference dbref = new FirebaseDatabase().reference();
     String studentId = useridController.text;
+        dbref.child('student-attendance-details-${_selectedDay}').remove();
     dbref.child('student-attendance-details-${_selectedDay}').child('$studentId').push().set(data);
      changeText();
      useridController.clear();

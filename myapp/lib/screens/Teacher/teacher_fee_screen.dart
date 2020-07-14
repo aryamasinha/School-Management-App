@@ -23,6 +23,7 @@ class _TeacherFeeScreenState extends State<TeacherFeeScreen> {
     }; 
     DatabaseReference dbref = new FirebaseDatabase().reference();
     String studentId = useridController.text;
+     dbref.child('student-fee-details-${_selectedMonth}').remove();
     dbref.child('student-fee-details-${_selectedMonth}').child('$studentId').push().set(data);
     useridController.clear();
     changeText();
