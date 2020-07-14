@@ -17,12 +17,12 @@ class _TeacherFeeScreenState extends State<TeacherFeeScreen> {
   void _pushDataAndNavigate(BuildContext context){
     if(useridController.text != ''){
         var data = {
-     "month" : _selectedMonth,
+    
      "status" : _selectedFeeStatus,
     }; 
     DatabaseReference dbref = new FirebaseDatabase().reference();
     String studentId = useridController.text;
-    dbref.child('student-fee-details').child('$studentId').push().set(data);
+    dbref.child('student-fee-details-${_selectedMonth}').child('$studentId').push().set(data);
     useridController.clear();
     changeText();
     }

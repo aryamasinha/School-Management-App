@@ -26,13 +26,14 @@ class _TeacherAttendanceScreenState extends State<TeacherAttendanceScreen> {
    void _pushDataAndNavigate(BuildContext context){
      if(useridController.text != ''){
         var data = {
-     "day" : _selectedDay,
+     
      "status" : _selectedAttendance,
     }; 
     DatabaseReference dbref = new FirebaseDatabase().reference();
     String studentId = useridController.text;
-    dbref.child('student-attendance-details').child('$studentId').push().set(data);
+    dbref.child('student-attendance-details-${_selectedDay}').child('$studentId').push().set(data);
      changeText();
+     useridController.clear();
      }
    
   }
