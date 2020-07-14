@@ -5,6 +5,7 @@ import 'package:schoolapp/screens/Student/student_result_screen.dart';
 import 'package:schoolapp/screens/Teacher/teacher_attendance_screen.dart';
 import 'package:schoolapp/screens/Teacher/teacher_fee_screen.dart';
 import 'package:schoolapp/screens/Teacher/teacher_result_screen.dart';
+import 'package:schoolapp/screens/logout.dart';
 
 
 
@@ -24,6 +25,29 @@ class TeacherHomeScreen extends StatelessWidget {
     onWillPop: () async => false,
           child: MaterialApp(
         home: Scaffold(
+           appBar: AppBar(
+          backgroundColor:  Colors.white,
+          title: const Text('First Step Play School',
+          style: TextStyle(
+            color:  Colors.purple
+          ),),
+          actions: <Widget>[
+            
+            IconButton(
+              icon: Icon(
+                Icons.exit_to_app,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                                        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Logout()
+        ));
+              },
+            ),
+          ]
+          ),
         backgroundColor: Colors.purple,
         body: Center(
            child: Padding(

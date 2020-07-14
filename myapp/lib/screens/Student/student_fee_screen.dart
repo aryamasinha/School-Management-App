@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:schoolapp/screens/logout.dart';
 
 class StudentFeeScreen extends StatefulWidget {
 
@@ -208,6 +209,29 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
     onWillPop: () async => false,
           child: MaterialApp(
         home: Scaffold(
+           appBar: AppBar(
+          backgroundColor:  Colors.white,
+          title: const Text('First Step Play School',
+          style: TextStyle(
+            color:  Colors.purple
+          ),),
+          actions: <Widget>[
+            
+            IconButton(
+              icon: Icon(
+                Icons.exit_to_app,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                                        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Logout()
+        ));
+              },
+            ),
+          ]
+          ),
         backgroundColor: Color.fromRGBO(220, 155, 253, 1),
         body: Center(
            child: Padding(
@@ -258,7 +282,7 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
                                right: 50,
                              ),
                              child: Text(
-                               "Paid/Unpaid",
+                               "Paid/\nUnpaid",
                                style: TextStyle(
                                  fontSize: 22,
                                ),

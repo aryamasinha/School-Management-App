@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:schoolapp/screens/logout.dart';
 
 class StudentAttendanceScreen extends StatefulWidget {
 
@@ -106,6 +107,29 @@ String id;
     onWillPop: () async => false,
           child: MaterialApp(
         home: Scaffold(
+           appBar: AppBar(
+          backgroundColor:  Colors.white,
+          title: const Text('First Step Play School',
+          style: TextStyle(
+            color:  Colors.purple
+          ),),
+          actions: <Widget>[
+            
+            IconButton(
+              icon: Icon(
+                Icons.exit_to_app,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                                        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Logout()
+        ));
+              },
+            ),
+          ]
+          ),
         backgroundColor: Color.fromRGBO(220, 155, 253, 1),
         body: Center(
            child: Padding(
@@ -153,7 +177,7 @@ String id;
                              padding: const EdgeInsets.only(
                                top: 10,
                                left: 70,
-                               right: 50,
+                               right: 20,
                              ),
                              child: Text(
                                "Present/\nAbsent",

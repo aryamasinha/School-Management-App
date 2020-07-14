@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:schoolapp/screens/Student/student_attendance_screen.dart';
 import 'package:schoolapp/screens/Student/student_fee_screen.dart';
 import 'package:schoolapp/screens/Student/student_result_screen.dart';
+import 'package:schoolapp/screens/logout.dart';
 
 class StudentHomeScreen extends StatelessWidget {
  
@@ -14,7 +15,31 @@ class StudentHomeScreen extends StatelessWidget {
     return new WillPopScope(
     onWillPop: () async => false,
           child: MaterialApp(
+            
         home: Scaffold(
+          appBar: AppBar(
+          backgroundColor:  Colors.white,
+          title: const Text('First Step Play School',
+          style: TextStyle(
+            color:  Colors.purple
+          ),),
+          actions: <Widget>[
+            
+            IconButton(
+              icon: Icon(
+                Icons.exit_to_app,
+                color: Colors.purple,
+              ),
+              onPressed: () {
+                                        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Logout()
+        ));
+              },
+            ),
+          ]
+          ),
         backgroundColor: Colors.purple,
         body: Center(
            child: Padding(
