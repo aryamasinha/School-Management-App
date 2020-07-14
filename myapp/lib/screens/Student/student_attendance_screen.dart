@@ -25,9 +25,10 @@ String tuesday1 = '';
 String wednesday1= '';
 String thursday1 = '';
 String friday1 = '';
-
+String id;
 @override
     void initState(){
+      id = widget.id;
       super.initState();
       DatabaseReference dbref = FirebaseDatabase.instance.reference();
       dbref.child('student-attendance-details-Monday').child('student001').once().then((DataSnapshot snap){

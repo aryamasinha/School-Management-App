@@ -17,13 +17,14 @@ class _StudentResultScreenState extends State<StudentResultScreen> {
      String bengalimarks = '' , hindimarks = '' , englishmarks ='', mathmarks = '', evsmarks ='',gkmarks ='',drawingmarks ='';
       
       String bengali = '' , hindi = '' , english ='', math = '', evs ='',gk ='',drawing ='';
-
+      String id;
 
     @override
     void initState(){
+      id = widget.id;
       super.initState();
       DatabaseReference dbref = FirebaseDatabase.instance.reference();
-      dbref.child('student-marks').child('student001').once().then((DataSnapshot snap){
+      dbref.child('student-marks').child('${id}').once().then((DataSnapshot snap){
          var keys = snap.value.keys;
          var data = snap.value;
          for(var key in keys){

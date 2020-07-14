@@ -3,8 +3,8 @@ import 'package:firebase_database/firebase_database.dart';
 
 class StudentFeeScreen extends StatefulWidget {
 
-
-  StudentFeeScreen(id);
+  String id;
+  StudentFeeScreen(this.id);
 
   @override
   _StudentFeeScreenState createState() => _StudentFeeScreenState();
@@ -37,12 +37,14 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
   String datafee9 = '';
   String datafee10 = '';
   String datafee11 = '';
+  
 
    @override
     void initState(){
+      id = widget.id;
       super.initState();
       DatabaseReference dbref = FirebaseDatabase.instance.reference();
-      dbref.child('student-fee-details-January').child('student001').once().then((DataSnapshot snap){
+      dbref.child('student-fee-details-January').child('${id}').once().then((DataSnapshot snap){
           var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -53,7 +55,7 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
          datafee4 = (snap.value == null)? 'Unpaid' : temp;
          
       });
-       dbref.child('student-fee-details-February').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-fee-details-February').child('${id}').once().then((DataSnapshot snap){
          var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -65,7 +67,7 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
          
 
       });
-       dbref.child('student-fee-details-March').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-fee-details-March').child('${id}').once().then((DataSnapshot snap){
           var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -76,7 +78,7 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
          datafee4 = (snap.value == null)? 'Unpaid' : temp;
          
       });
-       dbref.child('student-fee-details-April').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-fee-details-April').child('${id}').once().then((DataSnapshot snap){
          var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -87,7 +89,7 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
          datafee4 = (snap.value == null)? 'Unpaid' : temp;
          
       });
-       dbref.child('student-fee-details-May').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-fee-details-May').child('${id}').once().then((DataSnapshot snap){
          var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -98,7 +100,7 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
          datafee4 = (snap.value == null)? 'Unpaid' : temp;
          
       });
-       dbref.child('student-fee-details-June').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-fee-details-June').child('${id}').once().then((DataSnapshot snap){
           var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -109,7 +111,7 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
          datafee4 = (snap.value == null)? 'Unpaid' : temp;
          
       });
-       dbref.child('student-fee-details-July').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-fee-details-July').child('${id}').once().then((DataSnapshot snap){
           var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -120,7 +122,7 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
          datafee4 = (snap.value == null)? 'Unpaid' : temp;
          
       });
-       dbref.child('student-fee-details-August').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-fee-details-August').child('${id}').once().then((DataSnapshot snap){
          var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -131,7 +133,7 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
          datafee4 = (snap.value == null)? 'Unpaid' : temp;
          
       });
-       dbref.child('student-fee-details-September').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-fee-details-September').child('${id}').once().then((DataSnapshot snap){
           var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -142,7 +144,7 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
          datafee4 = (snap.value == null)? 'Unpaid' : temp;
          
       });
-       dbref.child('student-fee-details-October').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-fee-details-October').child('${id}').once().then((DataSnapshot snap){
          var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -153,7 +155,7 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
          datafee4 = (snap.value == null)? 'Unpaid' : temp;
          
       });
-       dbref.child('student-fee-details-November').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-fee-details-November').child('${id}').once().then((DataSnapshot snap){
           var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -164,7 +166,7 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
          datafee4 = (snap.value == null)? 'Unpaid' : temp;
          
       });
-       dbref.child('student-fee-details-December').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-fee-details-December').child('${id}').once().then((DataSnapshot snap){
           var keys = snap.value.keys;
          var data = snap.value;
          var temp;
