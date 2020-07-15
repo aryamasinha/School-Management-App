@@ -296,54 +296,7 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
                        child: Table(
             border: TableBorder.all(color: Colors.black),
             children: [
-                TableRow(children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text('January',
-                       style: TextStyle(
-                         fontSize: 15,
-                       ),),
-                  ),
-                   Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text('${fee0}',
-                       style: TextStyle(
-                         fontSize: 15,
-                       ),),
-                  ),
-                ]),
-                  TableRow(children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text('February',
-                       style: TextStyle(
-                         fontSize: 15,
-                       ),),
-                  ),
-                   Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text('${fee1}',
-                       style: TextStyle(
-                         fontSize: 15,
-                       ),),
-                  ),
-                ]),
-                  TableRow(children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text('March',
-                       style: TextStyle(
-                         fontSize: 15,
-                       ),),
-                  ),
-                   Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text('${fee2}',
-                       style: TextStyle(
-                         fontSize: 15,
-                       ),),
-                  ),
-                ]),
+               
                   TableRow(children: [
                   Padding(
                     padding: const EdgeInsets.all(5.0),
@@ -488,7 +441,54 @@ class _StudentFeeScreenState extends State<StudentFeeScreen> {
                        ),),
                   ),
                 ]),
-
+                 TableRow(children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text('January',
+                       style: TextStyle(
+                         fontSize: 15,
+                       ),),
+                  ),
+                   Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text('${fee0}',
+                       style: TextStyle(
+                         fontSize: 15,
+                       ),),
+                  ),
+                ]),
+                  TableRow(children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text('February',
+                       style: TextStyle(
+                         fontSize: 15,
+                       ),),
+                  ),
+                   Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text('${fee1}',
+                       style: TextStyle(
+                         fontSize: 15,
+                       ),),
+                  ),
+                ]),
+                  TableRow(children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text('March',
+                       style: TextStyle(
+                         fontSize: 15,
+                       ),),
+                  ),
+                   Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text('${fee2}',
+                       style: TextStyle(
+                         fontSize: 15,
+                       ),),
+                  ),
+                ]),
             ]
           ),
           
