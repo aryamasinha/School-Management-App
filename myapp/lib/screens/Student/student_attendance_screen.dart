@@ -32,7 +32,7 @@ String id;
       id = widget.id;
       super.initState();
       DatabaseReference dbref = FirebaseDatabase.instance.reference();
-      dbref.child('student-attendance-details-Monday').child('student001').once().then((DataSnapshot snap){
+      dbref.child('student-attendance-details-Monday').child('${id}').once().then((DataSnapshot snap){
           var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -43,7 +43,7 @@ String id;
          monday1 = (snap.value == null)? 'Absent' : temp;
          
       });
-        dbref.child('student-attendance-details-Tuesday').child('student001').once().then((DataSnapshot snap){
+        dbref.child('student-attendance-details-Tuesday').child('${id}').once().then((DataSnapshot snap){
           var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -54,7 +54,7 @@ String id;
          tuesday1 = (snap.value == null)? 'Absent' : temp;
          
       });
-       dbref.child('student-attendance-details-Wednesday').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-attendance-details-Wednesday').child('${id}').once().then((DataSnapshot snap){
           var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -65,7 +65,7 @@ String id;
          wednesday1 = (snap.value == null)? 'Absent' : temp;
          
       });
-       dbref.child('student-attendance-details-Thursday').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-attendance-details-Thursday').child('${id}').once().then((DataSnapshot snap){
           var keys = snap.value.keys;
          var data = snap.value;
          var temp;
@@ -76,7 +76,7 @@ String id;
          thursday1 = (snap.value == null)? 'Absent' : temp;
          
       });
-       dbref.child('student-attendance-details-Friday').child('student001').once().then((DataSnapshot snap){
+       dbref.child('student-attendance-details-Friday').child('${id}').once().then((DataSnapshot snap){
           var keys = snap.value.keys;
          var data = snap.value;
          var temp;
