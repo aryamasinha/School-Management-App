@@ -19,7 +19,7 @@ class _TeacherDetailState extends State<TeacherDetail> {
   String warningtText = '';
 
   bool _allDetailsVaild(){
-    if(nameController.text != '' && photourlController.text != ''){
+    if(nameController.text != '' ){
       return true;
     }
     else{

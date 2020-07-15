@@ -26,7 +26,7 @@ class _StudentDetailState extends State<StudentDetail> {
   String warningText = '';
 
   bool _allDetailsVaild(){
-    if(nameController.text != '' && photourlController.text != '' &&  fathernameController.text != '' && mothernameController.text != '' && classController.text != ''){
+    if(nameController.text != '' &&  fathernameController.text != '' && mothernameController.text != '' && classController.text != ''){
       return true;
     }
     else{
