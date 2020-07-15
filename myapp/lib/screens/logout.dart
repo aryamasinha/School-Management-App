@@ -38,48 +38,51 @@ class _LogoutState extends State<Logout> {
   }
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body:  Padding(
-          padding: const EdgeInsets.only(
-           top: 100,
-           left: 20,
-           right: 20,
-          ),
-          child: Column(
-            children: <Widget>[
-              Text(
-                "Logged Out!",
-                style: TextStyle(
-                  color: Colors.purple,
-                  fontSize: 25,
-                  fontFamily: "Cursive",
+    return new WillPopScope(
+    onWillPop: () async => false,
+          child: MaterialApp(
+        home: Scaffold(
+          body:  Padding(
+            padding: const EdgeInsets.only(
+             top: 100,
+             left: 20,
+             right: 20,
+            ),
+            child: Column(
+              children: <Widget>[
+                Text(
+                  "Logged Out!",
+                  style: TextStyle(
+                    color: Colors.purple,
+                    fontSize: 25,
+                    fontFamily: "Cursive",
+                  ),
+                  
                 ),
-                
-              ),
-                                SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                          width: double.infinity,
-                          child: RaisedButton(
-                          onPressed: () {
-                               Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => LoginScreen(userids,password,type)
-        ));
-                          },
-                          textColor: Colors.purple,
-                          child: const Text(
-                            'Login',
-                            style: TextStyle(fontSize: 20)
+                                  SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                            width: double.infinity,
+                            child: RaisedButton(
+                            onPressed: () {
+                                 Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LoginScreen(userids,password,type)
+          ));
+                            },
+                            textColor: Colors.purple,
+                            child: const Text(
+                              'Login',
+                              style: TextStyle(fontSize: 20)
+                            ),
                           ),
-                        ),
-                  ),
-            ],
-          ),
-        ),  
+                    ),
+              ],
+            ),
+          ),  
+        ),
       ),
     );
   }
