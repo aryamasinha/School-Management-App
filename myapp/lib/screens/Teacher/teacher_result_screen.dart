@@ -61,7 +61,7 @@ void changeTextSuccess() {
     }; 
     DatabaseReference dbref = new FirebaseDatabase().reference();
     String studentId = useridController.text;
-    dbref.child('student-marks').child('$studentId').remove();R
+    dbref.child('student-marks').child('$studentId').remove();
     dbref.child('student-marks').child('$studentId').push().set(data);
     englishMarksController.clear();
     hindiMarksController.clear();

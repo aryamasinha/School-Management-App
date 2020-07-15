@@ -10,7 +10,7 @@ class LoginScreen extends StatefulWidget {
   List<String> userids = [];
   List<String> password = [];
   List<String> type = [];
-  List<String> firstTimeUser = [];
+  
 
   LoginScreen(this.userids,this.password,this.type);
 
@@ -22,9 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String id;
 
   String userType;
-  String firstTime ;
   String warningText = ' ';
-
   TextEditingController useridController = new TextEditingController();
 
   TextEditingController passwordController = new TextEditingController();
@@ -35,7 +33,6 @@ class _LoginScreenState extends State<LoginScreen> {
         if(widget.password[i] == passwordController.text){
             id =  widget.userids[i];
             userType = widget.type[i];
-            firstTime = widget.firstTimeUser[i];
             return true;
         }
       }
