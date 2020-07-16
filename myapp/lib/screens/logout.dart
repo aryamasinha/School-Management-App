@@ -15,6 +15,8 @@ class _LogoutState extends State<Logout> {
    List<String> userids = [];
     List<String> password = [];
     List<String> type = [];
+
+    //logout
     
     @override
     void initState(){
