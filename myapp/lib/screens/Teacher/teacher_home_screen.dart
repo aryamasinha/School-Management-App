@@ -3,6 +3,7 @@ import 'package:schoolapp/screens/Student/student_attendance_screen.dart';
 import 'package:schoolapp/screens/Student/student_fee_screen.dart';
 import 'package:schoolapp/screens/Student/student_result_screen.dart';
 import 'package:schoolapp/screens/Teacher/teacher_attendance_screen.dart';
+import 'package:schoolapp/screens/Teacher/teacher_chat_home_screen.dart';
 import 'package:schoolapp/screens/Teacher/teacher_fee_screen.dart';
 import 'package:schoolapp/screens/Teacher/teacher_result_screen.dart';
 import 'package:schoolapp/screens/logout.dart';
@@ -178,7 +179,13 @@ class TeacherHomeScreen extends StatelessWidget {
            SizedBox(
                   width: double.infinity,
                                 child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                                Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>TeacherChatHomeScreen()
+          ));
+                          },
                     textColor: Colors.purple,
                     child: const Text(
                       'Go to Chat Screen',

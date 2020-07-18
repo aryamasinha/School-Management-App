@@ -14,19 +14,14 @@ class StudentDetail extends StatefulWidget {
 
 class _StudentDetailState extends State<StudentDetail> {
   TextEditingController nameController = new TextEditingController();
-
   TextEditingController fathernameController = new TextEditingController();
-
   TextEditingController mothernameController = new TextEditingController();
-
-  TextEditingController classController = new TextEditingController();
-
   TextEditingController photourlController = new TextEditingController();
-
+  String selectedClass = "Play-Group";
   String warningText = '';
 
   bool _allDetailsVaild(){
-    if(nameController.text != '' &&  fathernameController.text != '' && mothernameController.text != '' && classController.text != ''){
+    if(nameController.text != '' &&  fathernameController.text != '' && mothernameController.text != ''){
       return true;
     }
     else{
@@ -51,7 +46,7 @@ class _StudentDetailState extends State<StudentDetail> {
     }
     else{
        var data = {
-    "class" : classController.text,
+    "class" : selectedClass,
     "fathers-name" : fathernameController.text,
     "mothers-name" : mothernameController.text,
     "name" : nameController.text,
@@ -169,22 +164,25 @@ class _StudentDetailState extends State<StudentDetail> {
                      SizedBox(
                        height: 10,
                        ),
-                     Padding(
-                       padding: const EdgeInsets.only(
-                         left: 10,
-                         right: 10,
-                       ),
-                       child: TextField(
-                         controller: classController,
-                          decoration: InputDecoration(
-                            hintText: 'Enter Class',
-                            hintStyle: TextStyle(
-                              fontFamily: "Raleway",
-                              color: Colors.purple,
-                            ),
-                          ),
-                       ),
-                     ),
+                       Text("Choose Class",
+                       style: TextStyle(
+                         color: Colors.purple
+                       ),),
+                         new DropdownButton<String>(
+                           hint:  Text("Select Day"),
+                           value: selectedClass,
+                          items: <String>['Play-Group', 'Nursery', 'LKG-A', 'LKG-B', 'UKG'].map((String value) {
+                                return new DropdownMenuItem<String>(
+                                        value: value,
+                                        child: new Text(value),
+                                );
+                           }).toList(),
+                          onChanged:(String newValue) {
+        setState(() {
+              selectedClass = newValue;
+       });
+},
+                        ),
                      SizedBox(
                        height: 20,
                        ),
