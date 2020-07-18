@@ -22,7 +22,7 @@ class _TeacherResultScreenState extends State<TeacherResultScreen> {
   TextEditingController drawingMarksController = new TextEditingController();
 
 String warningText = 'Scroll Down';
-
+String selectedExam = 'First-Term';
 bool allDataFilled(){
      if (useridController.text != '' &&
      drawingMarksController.text != '' 
@@ -61,8 +61,8 @@ void changeTextSuccess() {
     }; 
     DatabaseReference dbref = new FirebaseDatabase().reference();
     String studentId = useridController.text;
-    dbref.child('student-marks').child('$studentId').remove();
-    dbref.child('student-marks').child('$studentId').push().set(data);
+    dbref.child('student-marks-$selectedExam').child('$studentId').remove();
+    dbref.child('student-marks-$selectedExam').child('$studentId').push().set(data);
     englishMarksController.clear();
     hindiMarksController.clear();
     bengaliMarksController.clear();
@@ -153,6 +153,28 @@ void changeTextSuccess() {
                             ),
                          ),
                        ),
+                       SizedBox(
+                         height: 20,
+                       ),
+                       Text("Choose Exam",
+                       style: TextStyle(
+                         color: Colors.purple,
+                       ),),
+                       new DropdownButton<String>(
+                           hint:  Text("Select Exam"),
+                           value: selectedExam,
+                          items: <String>['First-Term', 'Half-yearly', 'Annual'].map((String value) {
+                                return new DropdownMenuItem<String>(
+                                        value: value,
+                                        child: new Text(value),
+                                );
+                           }).toList(),
+                          onChanged:(String newValue) {
+        setState(() {
+              selectedExam = newValue;
+       });
+},
+                        ),
                        SizedBox(
                          height: 20,
                        ),

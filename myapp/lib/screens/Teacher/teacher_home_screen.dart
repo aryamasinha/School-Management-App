@@ -5,6 +5,7 @@ import 'package:schoolapp/screens/Student/student_result_screen.dart';
 import 'package:schoolapp/screens/Teacher/teacher_attendance_screen.dart';
 import 'package:schoolapp/screens/Teacher/teacher_chat_home_screen.dart';
 import 'package:schoolapp/screens/Teacher/teacher_fee_screen.dart';
+import 'package:schoolapp/screens/Teacher/teacher_ht_wt.dart';
 import 'package:schoolapp/screens/Teacher/teacher_result_screen.dart';
 import 'package:schoolapp/screens/logout.dart';
 
@@ -174,6 +175,37 @@ class TeacherHomeScreen extends StatelessWidget {
                       ],
                       ),
             ),
+          ), 
+           SizedBox(height: 20),
+            InkWell(
+            onTap: (){
+                 Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => StudentHeightWeight()
+          ));
+            },
+                      child: Container(
+                        width: 320,
+                            height: 150,
+                        child: Card(                     
+                    child: 
+                        Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Text("Enter Student Details",
+                              style: TextStyle(
+                              color: Colors.yellow,
+                              fontSize: 35,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: "Raleway"
+                  ),),
+                            ),),
+        
+                        
+            ),
+                      )
+                      ,
           ), 
            SizedBox(height: 20),
            SizedBox(
