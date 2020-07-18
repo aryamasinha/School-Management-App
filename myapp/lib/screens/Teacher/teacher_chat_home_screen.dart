@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schoolapp/screens/Teacher/teacher_chat_screen.dart';
+import 'package:schoolapp/screens/logout.dart';
 
 class TeacherChatHomeScreen extends StatefulWidget {
   @override
@@ -27,6 +28,11 @@ class _TeacherChatHomeScreenState extends State<TeacherChatHomeScreen> {
                 color: Colors.purple,
               ),
               onPressed: () {
+                Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Logout()
+              ));
               },
             ),
           ]

@@ -182,7 +182,7 @@ class TeacherHomeScreen extends StatelessWidget {
                  Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => StudentHeightWeight()
+                  builder: (context) => StudentHeightWeightDetail()
           ));
             },
                       child: Container(

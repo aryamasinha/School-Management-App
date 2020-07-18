@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schoolapp/screens/Student/student_attendance_screen.dart';
+import 'package:schoolapp/screens/Student/student_chat_screen.dart';
 import 'package:schoolapp/screens/Student/student_fee_screen.dart';
 import 'package:schoolapp/screens/Student/student_result_screen.dart';
 import 'package:schoolapp/screens/logout.dart';
@@ -168,7 +169,13 @@ class StudentHomeScreen extends StatelessWidget {
            SizedBox(
                   width: double.infinity,
                                 child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                       Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StudentChatScreen(id)
+        ));
+                    },
                     textColor: Colors.purple,
                     child: const Text(
                       'Go to Chat Screen',
