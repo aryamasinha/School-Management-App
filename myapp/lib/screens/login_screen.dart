@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:schoolapp/screens/Admin/admin_home.dart';
 import 'package:schoolapp/screens/Student/get_started_student.dart';
+import 'package:schoolapp/screens/Student/student_home_screen.dart';
 import 'package:schoolapp/screens/Teacher/get_started_teacher.dart';
-
+import 'package:firebase_database/firebase_database.dart';
+import 'package:schoolapp/screens/Teacher/teacher_home_screen.dart';
 
 
 
@@ -28,6 +30,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   TextEditingController passwordController = new TextEditingController();
 
+    
+
   bool _isValidDetail(){ 
     for(int i=0;i<widget.userids.length;i++){
       if(widget.userids[i] == useridController.text){
@@ -41,20 +45,53 @@ class _LoginScreenState extends State<LoginScreen> {
     return false;
   }
 
+
     void _sendDataToNextScreen(BuildContext context) {
+
+        var data = {
+     "status" : "NO"
+    }; 
+      DatabaseReference dbref = FirebaseDatabase.instance.reference();
+      
       if(_isValidDetail() && (userType == "student")){
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => StudentGetStarted(id),
-        ));
+         DatabaseReference dbref = FirebaseDatabase.instance.reference();
+          dbref.child('first-time-login').child('$id').once().then((DataSnapshot snap){
+              if(snap.value == null){
+                  dbref.child('first-time-login').child('$id').push().set(data);
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                  builder: (context) => StudentGetStarted(id),
+                  ));
+              }else{
+                                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                  builder: (context) => StudentHomeScreen(id)
+                 ));
+              }
+        });
+        
       }
       else if(_isValidDetail() && (userType == "teacher")){
-         Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => TeacherGetStarted(id),
-        ));
+           DatabaseReference dbref = FirebaseDatabase.instance.reference();
+          dbref.child('first-time-login').child('$id').once().then((DataSnapshot snap){
+              if(snap.value == null){
+                  dbref.child('first-time-login').child('$id').push().set(data);
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                  builder: (context) => TeacherGetStarted(id)
+                  ));
+              }else{
+                                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                  builder: (context) => TeacherHomeScreen()
+                 ));
+              }
+        });
+        
       }
       else if(_isValidDetail() && (userType == "admin")){
          Navigator.push(
