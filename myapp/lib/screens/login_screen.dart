@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schoolapp/screens/Admin/admin_home.dart';
 import 'package:schoolapp/screens/Student/get_started_student.dart';
 import 'package:schoolapp/screens/Teacher/get_started_teacher.dart';
 
@@ -53,6 +54,13 @@ class _LoginScreenState extends State<LoginScreen> {
             context,
             MaterialPageRoute(
               builder: (context) => TeacherGetStarted(id),
+        ));
+      }
+      else if(_isValidDetail() && (userType == "admin")){
+         Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AdminHome()
         ));
       }
       else{
